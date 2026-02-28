@@ -453,13 +453,14 @@ const SCHOOLS = [
 ];
 
 const FACTOR_DEFAULTS = [
-  { key: "academic", label: "Academic Excellence", weight: 18, desc: "Math/reading proficiency, state rankings" },
-  { key: "college", label: "College Outcomes", weight: 10, desc: "SAT/ACT, graduation rate, college enrollment, AP participation" },
-  { key: "diversity", label: "Diversity and Inclusion", weight: 16, desc: "Racial/ethnic diversity index" },
+  { key: "academic", label: "Academic Excellence", weight: 14, desc: "Math/reading proficiency, state rankings" },
+  { key: "ncGrade", label: "NC Report Card Grade", weight: 10, desc: "Official NCDPI A-F school performance grade (80% proficiency + 20% growth)" },
+  { key: "college", label: "College Outcomes", weight: 8, desc: "SAT/ACT, graduation rate, college enrollment" },
+  { key: "diversity", label: "Diversity and Inclusion", weight: 14, desc: "Racial/ethnic diversity index" },
   { key: "asianRep", label: "Asian Population %", weight: 10, desc: "Asian student enrollment %" },
   { key: "sentiment", label: "Online Sentiment", weight: 10, desc: "Aggregated review sentiment" },
   { key: "ratio", label: "Student-Teacher Ratio", weight: 10, desc: "Lower = more attention" },
-  { key: "continuity", label: "K-8/12 Continuity", weight: 8, desc: "Avoids transitions" },
+  { key: "continuity", label: "K-8/12 Continuity", weight: 6, desc: "Avoids transitions" },
   { key: "cost", label: "Affordability", weight: 8, desc: "Tuition cost" },
   { key: "gifted", label: "Gifted/Advanced", weight: 10, desc: "AIG, enrichment, acceleration" },
 ];
