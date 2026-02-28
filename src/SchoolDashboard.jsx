@@ -30,6 +30,7 @@ const SCHOOLS = [
     sentimentScore: 72,
     sentimentSummary: "Generally positive. Parents note good teachers and small school feel. Some concerns about older facilities. School has declined in enrollment over 5 years but maintains solid academics.",
     sentimentSources: "Niche (A-, 3.8/5), GreatSchools (6/10), SchoolDigger (4-star)",
+    collegePrepScore: null, satAvg: null, actAvg: null, gradRate: null, apParticipation: null, collegeEnrollRate: null, notableColleges: "N/A (elementary school)",
     sourceLinks: { niche: "https://www.niche.com/k12/oak-grove-elementary-school-raleigh-nc/", gs: "https://www.greatschools.org/north-carolina/raleigh/1888-Oak-Grove-Elementary/", usnews: "https://www.usnews.com/education/k12/north-carolina/oak-grove-elementary-220300", psr: "https://www.publicschoolreview.com/oak-grove-elementary-school-profile/27606" },
   },
   {
@@ -50,6 +51,7 @@ const SCHOOLS = [
     sentimentScore: 82,
     sentimentSummary: "Mostly positive. Parents highlight teacher quality, safety, and welcoming environment. Some concerns about front office communication and large school size. Multiple parents moving from out of state praise it as superior to previous schools.",
     sentimentSources: "Niche (A, 4.0/5), GreatSchools (9/10), Movoto (18 reviews, 3.5 avg)",
+    collegePrepScore: null, satAvg: null, actAvg: null, gradRate: null, apParticipation: null, collegeEnrollRate: null, notableColleges: "N/A (elementary school)",
     sourceLinks: { niche: "https://www.niche.com/k12/holly-springs-elementary-school-holly-springs-nc/", gs: "https://www.greatschools.org/north-carolina/holly-springs/1967-Holly-Springs-Elementary/", usnews: "https://www.usnews.com/education/k12/north-carolina/holly-springs-elementary-216410" },
   },
   {
@@ -69,6 +71,7 @@ const SCHOOLS = [
     sentimentScore: 85,
     sentimentSummary: "Very positive. Parents praise caring teachers, strong academics, and well-managed environment despite large size. Few negative reviews.",
     sentimentSources: "Niche (A, 2 reviews), GreatSchools (8/10), SchoolDigger (5-star)",
+    collegePrepScore: null, satAvg: null, actAvg: null, gradRate: null, apParticipation: null, collegeEnrollRate: null, notableColleges: "N/A (elementary school)",
     sourceLinks: { niche: "https://www.niche.com/k12/holly-grove-elementary-school-holly-springs-nc/" },
   },
   {
@@ -88,6 +91,7 @@ const SCHOOLS = [
     sentimentScore: 88,
     sentimentSummary: "Highly positive. Parents love field trips, teacher relationships, and strong community feel. Highest parent satisfaction among area schools.",
     sentimentSources: "Niche (A, 5/5), GreatSchools (8/10), SchoolDigger (5-star, top 4.3%)",
+    collegePrepScore: null, satAvg: null, actAvg: null, gradRate: null, apParticipation: null, collegeEnrollRate: null, notableColleges: "N/A (elementary school)",
     sourceLinks: { niche: "https://www.niche.com/k12/holly-ridge-elementary-school-holly-springs-nc/", sd: "https://www.schooldigger.com/go/NC/schools/0472002683/school.aspx" },
   },
   {
@@ -107,6 +111,7 @@ const SCHOOLS = [
     sentimentScore: 70,
     sentimentSummary: "No parent reviews yet (opened July 2025). Community excitement about new facilities. Score is neutral baseline pending reviews.",
     sentimentSources: "WCPSS website, School Construction News (Dec 2025)",
+    collegePrepScore: null, satAvg: null, actAvg: null, gradRate: null, apParticipation: null, collegeEnrollRate: null, notableColleges: "N/A (elementary school)",
     sourceLinks: { wcpss: "https://nc01911451.schoolwires.net/rexroades" },
   },
   {
@@ -126,6 +131,7 @@ const SCHOOLS = [
     sentimentScore: 65,
     sentimentSummary: "Polarized. Official ratings are very high (GS 10/10, Niche A). However, student reviews on Niche cite bullying, poor facility conditions, and restrictive policies. Some parents praise the learning environment.",
     sentimentSources: "Niche (A, 3.2/5, 5 reviews), GreatSchools (10/10), SchoolDigger (4-star), U.S. News (#89)",
+    collegePrepScore: null, satAvg: null, actAvg: null, gradRate: null, apParticipation: null, collegeEnrollRate: null, notableColleges: "N/A (middle school)",
     sourceLinks: { niche: "https://www.niche.com/k12/lufkin-road-middle-school-apex-nc/", gs: "https://www.greatschools.org/north-carolina/apex/2796-Lufkin-Road-Middle/", usnews: "https://www.usnews.com/education/k12/north-carolina/lufkin-road-middle-265363", sd: "https://www.schooldigger.com/go/NC/schools/0472002490/school.aspx" },
   },
   {
@@ -145,6 +151,7 @@ const SCHOOLS = [
     sentimentScore: 72,
     sentimentSummary: "Generally positive. Parents appreciate diversity and extracurriculars. Some reviews mention growing class sizes due to population boom. Sports and arts well regarded.",
     sentimentSources: "Niche (A, 7 reviews), GreatSchools (7/10)",
+    collegePrepScore: 72, satAvg: 1134, actAvg: 27, gradRate: 98, apParticipation: 69, collegeEnrollRate: 85, notableColleges: "UNC Chapel Hill, NC State, Wake Tech dual enrollment; 3 College Success Awards since 2018-19",
     sourceLinks: { niche: "https://www.niche.com/k12/holly-springs-high-school-holly-springs-nc/" },
   },
   {
@@ -164,6 +171,7 @@ const SCHOOLS = [
     sentimentScore: 72,
     sentimentSummary: "No reviews yet (opened Aug 2025). Community excitement about modern facilities and proximity. Score is neutral baseline pending reviews.",
     sentimentSources: "CBS17, WRAL, WCPSS enrollment proposal",
+    collegePrepScore: null, satAvg: null, actAvg: null, gradRate: null, apParticipation: null, collegeEnrollRate: null, notableColleges: "No data yet (opened Aug 2025, no graduates). AP Capstone Program offered.",
     sourceLinks: { wcpss: "https://www.wcpss.net/Page/58487" },
   },
   {
@@ -183,6 +191,7 @@ const SCHOOLS = [
     sentimentScore: 68,
     sentimentSummary: "Polarized. Niche A but GS only 5/10. Parent reviews flag diversity and inclusivity concerns. Multiple reviews mention racial climate issues for minority families.",
     sentimentSources: "Niche (A, 4.2/5, 6 reviews), GreatSchools (5/10)",
+    collegePrepScore: null, satAvg: null, actAvg: null, gradRate: null, apParticipation: null, collegeEnrollRate: null, notableColleges: "N/A (K-8 school, no high school graduates)",
     sourceLinks: { niche: "https://www.niche.com/k12/pine-springs-preparatory-academy-holly-springs-nc/", psr: "https://www.publicschoolreview.com/pine-springs-preparatory-academy-profile" },
   },
   {
@@ -202,6 +211,7 @@ const SCHOOLS = [
     sentimentScore: 62,
     sentimentSummary: "Mixed. Strong positives on academics and affordability. Multiple reviews flag lack of diversity, bias toward minority students, and bullying. One student cited ethnic bias.",
     sentimentSources: "Niche (A, 3.8/5, 14 reviews), Movoto, PrivateSchoolReview",
+    collegePrepScore: null, satAvg: null, actAvg: null, gradRate: null, apParticipation: null, collegeEnrollRate: null, notableColleges: "N/A (currently PK-10, expanding to 12)",
     sourceLinks: { niche: "https://www.niche.com/k12/thales-academy-holly-springs-holly-springs-nc/", pvsr: "https://www.privateschoolreview.com/thales-academy-holly-springs-pre-k-5-profile" },
   },
   {
@@ -221,6 +231,7 @@ const SCHOOLS = [
     sentimentScore: 76,
     sentimentSummary: "Positive but limited reviews. Long-established with loyal parent base. Small community feel valued.",
     sentimentSources: "Niche (B+), PrivateSchoolReview (90% acceptance), Yelp",
+    collegePrepScore: null, satAvg: null, actAvg: null, gradRate: null, apParticipation: null, collegeEnrollRate: null, notableColleges: "N/A (through 8th grade only)",
     sourceLinks: { niche: "https://www.niche.com/k12/new-school-montessori-center-holly-springs-nc/", pvsr: "https://www.privateschoolreview.com/new-school-montessori-center-profile" },
   },
   {
@@ -240,6 +251,7 @@ const SCHOOLS = [
     sentimentScore: 80,
     sentimentSummary: "Very positive. Parents praise academic rigor, STEM focus, and diverse community. Some note larger class sizes. Highly sought after with lottery waitlists.",
     sentimentSources: "Niche (A+, 4.3/5), GreatSchools (9/10)",
+    collegePrepScore: null, satAvg: null, actAvg: null, gradRate: null, apParticipation: null, collegeEnrollRate: null, notableColleges: "N/A (K-8 school, no high school graduates)",
     sourceLinks: { niche: "https://www.niche.com/k12/peak-charter-academy-apex-nc/", gs: "https://www.greatschools.org/north-carolina/apex/5583-Peak-Charter-Academy/", psr: "https://www.publicschoolreview.com/peak-charter-academy-profile" },
   },
   {
@@ -259,6 +271,7 @@ const SCHOOLS = [
     sentimentScore: 82,
     sentimentSummary: "Highly positive. Parents highlight academic excellence, college prep, and diverse STEM community. Strong college placement outcomes. Some note longer commute from Apex area.",
     sentimentSources: "Niche (A, 4.1/5), GreatSchools (10/10), U.S. News (#614)",
+    collegePrepScore: 92, satAvg: 1370, actAvg: 29, gradRate: 100, apParticipation: 88, collegeEnrollRate: 98, notableColleges: "Acceptances to 86 of top 100 colleges incl. Harvard, Yale, Princeton; 193 students at UNC Chapel Hill; 21 AP courses",
     sourceLinks: { niche: "https://www.niche.com/k12/triangle-math-and-science-academy-cary-nc/", gs: "https://www.greatschools.org/north-carolina/cary/5573-Triangle-Math-And-Science-Academy/", usnews: "https://www.usnews.com/education/best-high-schools/north-carolina/districts/triangle-math-and-science-academy/triangle-math-and-science-academy-high-14482" },
   },
   {
@@ -278,6 +291,7 @@ const SCHOOLS = [
     sentimentScore: 65,
     sentimentSummary: "Mixed. Parents appreciate diversity and community feel. Some concerns about academic rigor and larger class sizes. GS 7/10 suggests solid but not top-tier performance.",
     sentimentSources: "Niche (A-, 3.5/5), GreatSchools (7/10)",
+    collegePrepScore: null, satAvg: null, actAvg: null, gradRate: null, apParticipation: null, collegeEnrollRate: null, notableColleges: "N/A (K-8 school, no high school graduates)",
     sourceLinks: { niche: "https://www.niche.com/k12/cardinal-charter-academy-cary-nc/", gs: "https://www.greatschools.org/north-carolina/cary/5582-Cardinal-Charter-Academy/", psr: "https://www.publicschoolreview.com/cardinal-charter-academy-profile" },
   },
   {
@@ -297,6 +311,7 @@ const SCHOOLS = [
     sentimentScore: 45,
     sentimentSummary: "Negative to mixed. Low ratings across platforms. Some parents appreciate small school feel but academic outcomes are concerning. High staff turnover mentioned in reviews.",
     sentimentSources: "Niche (C, 2.5/5), GreatSchools (3/10)",
+    collegePrepScore: 38, satAvg: 1140, actAvg: 25, gradRate: 74, apParticipation: 26, collegeEnrollRate: 65, notableColleges: "1 College Success Award (2020-21); limited AP offerings; graduation rate below state average",
     sourceLinks: { niche: "https://www.niche.com/k12/southern-wake-academy-holly-springs-nc/", gs: "https://www.greatschools.org/north-carolina/holly-springs/5609-Southern-Wake-Academy/" },
   },
   {
@@ -316,16 +331,18 @@ const SCHOOLS = [
     sentimentScore: 90,
     sentimentSummary: "Extremely positive. Parents and students rave about teacher quality, resources, college prep, and inclusive community. Consistently rated among best schools in NC.",
     sentimentSources: "Niche (A+, 4.5/5, 40+ reviews), U.S. News",
+    collegePrepScore: 98, satAvg: 1440, actAvg: 32, gradRate: 100, apParticipation: 95, collegeEnrollRate: 100, notableColleges: "100% college enrollment. Duke, Columbia, Princeton, Stanford; 92% AP pass rate; Class of 2025: 121 students to 60 colleges in 25 states",
     sourceLinks: { niche: "https://www.niche.com/k12/cary-academy-cary-nc/", pvsr: "https://www.privateschoolreview.com/cary-academy-profile" },
   },
 ];
 
 const FACTOR_DEFAULTS = [
-  { key: "academic", label: "Academic Excellence", weight: 22, desc: "Math/reading proficiency, state rankings" },
-  { key: "diversity", label: "Diversity and Inclusion", weight: 18, desc: "Racial/ethnic diversity index" },
+  { key: "academic", label: "Academic Excellence", weight: 18, desc: "Math/reading proficiency, state rankings" },
+  { key: "college", label: "College Outcomes", weight: 10, desc: "SAT/ACT, graduation rate, college enrollment, AP participation" },
+  { key: "diversity", label: "Diversity and Inclusion", weight: 16, desc: "Racial/ethnic diversity index" },
   { key: "asianRep", label: "Asian Population %", weight: 10, desc: "Asian student enrollment %" },
-  { key: "sentiment", label: "Online Sentiment", weight: 12, desc: "Aggregated review sentiment" },
-  { key: "ratio", label: "Student-Teacher Ratio", weight: 12, desc: "Lower = more attention" },
+  { key: "sentiment", label: "Online Sentiment", weight: 10, desc: "Aggregated review sentiment" },
+  { key: "ratio", label: "Student-Teacher Ratio", weight: 10, desc: "Lower = more attention" },
   { key: "continuity", label: "K-8/12 Continuity", weight: 8, desc: "Avoids transitions" },
   { key: "cost", label: "Affordability", weight: 8, desc: "Tuition cost" },
   { key: "gifted", label: "Gifted/Advanced", weight: 10, desc: "AIG, enrichment, acceleration" },
@@ -339,6 +356,18 @@ function computeScore(school, factors) {
   scores.diversity = school.diversityIndex * 100;
   scores.asianRep = Math.min(100, school.asianPct * 6.5);
   scores.sentiment = school.sentimentScore;
+  // College Outcomes: weighted combo of SAT, grad rate, AP participation, college enrollment
+  if (school.collegePrepScore !== null) {
+    scores.college = school.collegePrepScore;
+  } else {
+    // For elementary/middle/K-8 schools, use pathway school data or neutral score
+    const g = school.grades.toLowerCase();
+    if (g.includes("k") && !g.includes("12") && !g.includes("10") && !g.includes("9")) {
+      scores.college = 60; // Neutral for elementary/K-8 (depends on HS they feed into)
+    } else {
+      scores.college = 55; // Default for schools with no data yet
+    }
+  }
   scores.ratio = Math.max(0, Math.min(100, 100 - (school.studentTeacherRatio - 8) * 5));
   const g = school.grades.toLowerCase();
   if (g.includes("12") || g.includes("10")) scores.continuity = 95;
