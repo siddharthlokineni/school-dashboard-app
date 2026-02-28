@@ -13,6 +13,26 @@ const SOURCES = [
 
 const SCHOOLS = [
   {
+    name: "Oak Grove Elementary",
+    type: "Public",
+    grades: "PK-5",
+    address: "10401 Penny Road, Raleigh, NC 27606",
+    yourZoned: true,
+    distance: "3.5 mi from your address",
+    students: 553, studentTeacherRatio: 13, mathProficiency: 61, readingProficiency: 61,
+    nicheGrade: "A-", greatSchoolsRating: 6, tuition: 0, diversityIndex: 0.64,
+    asianPct: 7.0, hispanicPct: 21.0, whitePct: 53.0, blackPct: 16.0, multiracialPct: 3.0,
+    economicDisadvantaged: 32, giftedProgram: true, calendar: "Year-Round",
+    stateRank: "#581 of 2,617 elementary schools in NC (top 30%)",
+    schoolPath: "Lufkin Road Middle (year-round), then Felton Grove High",
+    specialPrograms: "AIG/Gifted & Talented, ESL",
+    notes: "Your base-assigned elementary school per WCPSS (confirmed Feb 2026). Year-round calendar. 61% math and reading proficiency, above state average. Student-teacher ratio of 13:1 is better than the NC average of 15:1. Diverse student body with 45% minority enrollment. 32% economically disadvantaged. SchoolDigger 4-star rating. School has become notably more diverse over the past decade.",
+    sentimentScore: 72,
+    sentimentSummary: "Generally positive. Parents note good teachers and small school feel. Some concerns about older facilities. School has declined in enrollment over 5 years but maintains solid academics.",
+    sentimentSources: "Niche (A-, 3.8/5), GreatSchools (6/10), SchoolDigger (4-star)",
+    sourceLinks: { niche: "https://www.niche.com/k12/oak-grove-elementary-school-raleigh-nc/", gs: "https://www.greatschools.org/north-carolina/raleigh/1888-Oak-Grove-Elementary/", usnews: "https://www.usnews.com/education/k12/north-carolina/oak-grove-elementary-220300", psr: "https://www.publicschoolreview.com/oak-grove-elementary-school-profile/27606" },
+  },
+  {
     name: "Holly Springs Elementary",
     type: "Public",
     grades: "PK-5",
@@ -422,8 +442,8 @@ export default function SchoolDashboard() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))", gap: 16, fontSize: 12.5, lineHeight: 1.65, color: "#aaa" }}>
             <div>
               <h4 style={{ color: "#4ecdc4", fontSize: 12.5, marginBottom: 5 }}>Elementary (2027-2032)</h4>
-              <p><strong style={{ color: "#e0e0ff" }}>Holly Springs Elementary</strong> is your base school. 83% math, 80% reading, Niche A, GS 9/10. Highest Asian % (12.9%) and diversity (0.65). Single Subject Acceleration Math stands out for advanced learners.</p>
-              <p style={{ marginTop: 6 }}><strong style={{ color: "#999" }}>Alt:</strong> <strong style={{ color: "#e0e0ff" }}>Pine Springs Prep</strong> (charter, free, K-8, lottery) avoids middle school transition. Singapore Math. Lower diversity.</p>
+              <p><strong style={{ color: "#e0e0ff" }}>Oak Grove Elementary</strong> is your base school (year-round). 61% math/reading, Niche A-, GS 6/10. Diversity index 0.64. 13:1 student-teacher ratio. Gifted & Talented program. 553 students with a smaller, community-oriented feel.</p>
+              <p style={{ marginTop: 6 }}><strong style={{ color: "#999" }}>Alt:</strong> <strong style={{ color: "#e0e0ff" }}>Holly Springs Elem</strong> (not zoned but nearby, 83% math, Niche A) or <strong style={{ color: "#e0e0ff" }}>Pine Springs Prep</strong> (charter, free, K-8, lottery). Singapore Math.</p>
             </div>
             <div>
               <h4 style={{ color: "#74c0fc", fontSize: 12.5, marginBottom: 5 }}>Middle (2032-2035)</h4>
@@ -432,7 +452,7 @@ export default function SchoolDashboard() {
             </div>
             <div>
               <h4 style={{ color: "#e879a8", fontSize: 12.5, marginBottom: 5 }}>High (2035-2039)</h4>
-              <p><strong style={{ color: "#e0e0ff" }}>Holly Springs High</strong> is current base. Niche A. <strong style={{ color: "#e0e0ff" }}>Felton Grove High</strong> on Stephenson Rd (1.5 mi away) opened 2025 and will be fully 9-12 by ~2028. Your child may be assigned there by 2035. Monitor WCPSS.</p>
+              <p><strong style={{ color: "#e0e0ff" }}>Felton Grove High</strong> is your base high school per WCPSS. On Stephenson Rd, only 1.5 mi away. Opened 2025, expanding to full 9-12 by ~2028. Will be fully operational well before your child reaches HS (~2036). Modern facilities for 2,200+ students.</p>
             </div>
             <div>
               <h4 style={{ color: "#6bcb77", fontSize: 12.5, marginBottom: 5 }}>Action Items</h4>
