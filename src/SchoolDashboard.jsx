@@ -17,7 +17,7 @@ const SCHOOLS = [
     type: "Public",
     grades: "PK-5",
     address: "401 Holly Springs Rd, Holly Springs, NC 27540",
-    yourZoned: true,
+    yourZoned: false,
     distance: "3.2 mi from your address",
     students: 907, studentTeacherRatio: 14, mathProficiency: 83, readingProficiency: 80,
     nicheGrade: "A", greatSchoolsRating: 9, tuition: 0, diversityIndex: 0.65,
@@ -113,7 +113,7 @@ const SCHOOLS = [
     type: "Public (High)",
     grades: "9-12",
     address: "5329 Cass Holt Rd, Holly Springs, NC 27540",
-    yourZoned: true, distance: "4.5 mi",
+    yourZoned: false, distance: "4.5 mi",
     students: 2200, studentTeacherRatio: 16, mathProficiency: 55, readingProficiency: 72,
     nicheGrade: "A", greatSchoolsRating: 7, tuition: 0, diversityIndex: 0.66,
     asianPct: 10.0, hispanicPct: 14.0, whitePct: 55.0, blackPct: 12.0, multiracialPct: 9.0,
@@ -132,7 +132,7 @@ const SCHOOLS = [
     type: "Public (High, New)",
     grades: "9-10 (expanding to 9-12)",
     address: "8550 Stephenson Road, Apex, NC 27539",
-    yourZoned: false, distance: "1.5 mi from your address",
+    yourZoned: true, distance: "1.5 mi from your address",
     students: 450, studentTeacherRatio: 15, mathProficiency: null, readingProficiency: null,
     nicheGrade: "N/A (new)", greatSchoolsRating: null, tuition: 0, diversityIndex: 0.65,
     asianPct: 10.0, hispanicPct: 13.0, whitePct: 57.0, blackPct: 12.0, multiracialPct: 8.0,
@@ -276,7 +276,7 @@ export default function SchoolDashboard() {
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <h1 style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 20, fontWeight: 700, background: "linear-gradient(90deg,#4ecdc4,#c084fc)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", marginBottom: 6 }}>School Finder / 3625 Lily Orchard Way, Apex NC 27539</h1>
           <p style={{ color: "#8888aa", fontSize: 12.5, maxWidth: 800, lineHeight: 1.6 }}>
-            Kindergarten 2027 | Pathway: <strong style={{ color: "#4ecdc4" }}>Holly Springs Elem</strong> &rarr; <strong style={{ color: "#74c0fc" }}>Lufkin Road Middle</strong> &rarr; <strong style={{ color: "#e879a8" }}>Holly Springs / Felton Grove High</strong>
+            Kindergarten 2027 | Pathway: <strong style={{ color: "#4ecdc4" }}>Oak Grove Elem</strong> &rarr; <strong style={{ color: "#74c0fc" }}>Lufkin Road Middle</strong> &rarr; <strong style={{ color: "#e879a8" }}>Felton Grove High</strong>
             <br/>{SCHOOLS.length} schools | {factors.length} weighted factors | 7+ data sources
           </p>
         </div>
@@ -284,7 +284,7 @@ export default function SchoolDashboard() {
 
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "20px 24px" }}>
         <div style={{ background: "linear-gradient(135deg,rgba(78,205,196,0.08),rgba(255,107,107,0.06))", border: "1px solid #2d2d5a", borderRadius: 12, padding: 14, marginBottom: 20, fontSize: 12, lineHeight: 1.6 }}>
-          <strong style={{ color: "#4ecdc4" }}>Your Base Assignment:</strong><span style={{ color: "#ccc", marginLeft: 6 }}>Holly Springs Elementary | Lufkin Road Middle (year-round) | Holly Springs High</span>
+          <strong style={{ color: "#4ecdc4" }}>Your Base Assignment:</strong><span style={{ color: "#ccc", marginLeft: 6 }}>Oak Grove Elementary (year-round) | Lufkin Road Middle (year-round) | Felton Grove High</span>
           <br/><strong style={{ color: "#ff6b6b" }}>Verify:</strong><span style={{ color: "#aaa", marginLeft: 6 }}>2025-26 reassignment opened Felton Grove High and Rex Road Elem nearby. Use <a href="https://osageo.wcpss.net/assignment-lookup/" target="_blank" rel="noopener noreferrer">WCPSS Lookup</a> or call 919-431-7400 to confirm for 2027-28.</span>
         </div>
 
