@@ -639,6 +639,112 @@ const SCHOOLS = [
     sentimentSources: "Niche (A, 3.8/5), GreatSchools (9/10), U.S. News (#61 NC)",
     sourceLinks: { niche: "https://www.niche.com/k12/apex-high-school-apex-nc/", gs: "https://www.greatschools.org/north-carolina/apex/1895-Apex-High/", usnews: "https://www.usnews.com/education/best-high-schools/north-carolina/districts/wake-county-schools/apex-high-school-14744" },
   },
+  {
+    name: "Davis Drive Middle",
+    type: "Public",
+    grades: "6-8",
+    address: "400 Davis Dr, Cary, NC 27519",
+    yourZoned: false, distance: "9 mi",
+    students: 997, studentTeacherRatio: 17, mathProficiency: 89, readingProficiency: 83,
+    nicheGrade: "A", greatSchoolsRating: 10, tuition: 0, diversityIndex: 0.64,
+    asianPct: 41.0, hispanicPct: 10.0, whitePct: 40.0, blackPct: 5.0, multiracialPct: 3.0,
+    economicDisadvantaged: 12, giftedProgram: true, calendar: "Traditional",
+    stateRank: "#3 in Wake County Middle Schools, #10 in NC (U.S. News)",
+    schoolPath: "White Oak Elem \u2192 Davis Drive Middle \u2192 Green Hope High",
+    specialPrograms: "AIG/Gifted, STEM enrichment, Advanced Math, Band/Orchestra, World Languages",
+    notes: "Top-10 middle school in NC. 89% math proficiency. GS 10/10. 41% Asian. Feeds from White Oak Elementary into Green Hope High. 9 mi from your address.",
+    ncGrade: "A", ncScore: 87, growthStatus: "Met Growth",
+    collegePrepScore: null, satAvg: null, gradRate: null, apParticipation: null, collegeEnrollRate: null, notableColleges: "N/A (middle school)",
+    sentimentScore: 90,
+    sentimentSummary: "Extremely positive. Top-ranked middle school with outstanding academics and gifted programs.",
+    sentimentSources: "Niche (A, 4.3/5), GreatSchools (10/10), U.S. News (#10 NC)",
+    sourceLinks: { niche: "https://www.niche.com/k12/davis-drive-middle-school-cary-nc/", gs: "https://www.greatschools.org/north-carolina/cary/1965-Davis-Drive-Middle/" },
+  },
+  {
+    name: "Washington GT Magnet Elementary",
+    type: "Magnet",
+    grades: "K-5",
+    address: "1000 Fayetteville St, Raleigh, NC 27601",
+    yourZoned: false, distance: "20 mi",
+    students: 478, studentTeacherRatio: 12, mathProficiency: 69, readingProficiency: 69,
+    nicheGrade: "A", greatSchoolsRating: 5, tuition: 0, diversityIndex: 0.72,
+    asianPct: 44.0, hispanicPct: 7.0, whitePct: 18.0, blackPct: 26.0, multiracialPct: 5.0,
+    economicDisadvantaged: 30, giftedProgram: true, calendar: "Traditional",
+    stateRank: "#64 Best Public Elementary in NC (Niche)",
+    schoolPath: "Washington GT Magnet \u2192 Carnage GT Magnet Middle \u2192 Enloe GT/IB Magnet High",
+    specialPrograms: "Gifted and Talented Magnet, GT curriculum county-wide lottery, 12:1 ratio",
+    notes: "WCPSS GT Magnet elementary. County-wide lottery. 44% Asian. Excellent 12:1 ratio. Feeds into Carnage then Enloe GT magnet pathway. 20 mi away.",
+    ncGrade: "B", ncScore: 72, growthStatus: "Met Growth",
+    collegePrepScore: null, satAvg: null, gradRate: null, apParticipation: null, collegeEnrollRate: null, notableColleges: "N/A (elementary)",
+    sentimentScore: 80,
+    sentimentSummary: "Positive. GT-focused curriculum and diverse student body. Small school feel with 478 students.",
+    sentimentSources: "Niche (A, 4.0/5), GreatSchools (5/10)",
+    sourceLinks: { niche: "https://www.niche.com/k12/washington-elementary-school-raleigh-nc/", gs: "https://www.greatschools.org/north-carolina/raleigh/1954-Washington-Elementary/" },
+  },
+  {
+    name: "Carnage GT Magnet Middle",
+    type: "Magnet",
+    grades: "6-8",
+    address: "1100 Fayetteville St, Raleigh, NC 27601",
+    yourZoned: false, distance: "20 mi",
+    students: 878, studentTeacherRatio: 15, mathProficiency: 63, readingProficiency: 69,
+    nicheGrade: "A", greatSchoolsRating: 10, tuition: 0, diversityIndex: 0.70,
+    asianPct: 43.0, hispanicPct: 13.0, whitePct: 10.0, blackPct: 33.0, multiracialPct: 2.0,
+    economicDisadvantaged: 29, giftedProgram: true, calendar: "Traditional",
+    stateRank: "#41 Best Public Middle School in NC (Niche)",
+    schoolPath: "Washington GT Magnet \u2192 Carnage GT Magnet Middle \u2192 Enloe GT/IB Magnet High",
+    specialPrograms: "Gifted and Talented Magnet, 43.5% identified gifted students, county-wide lottery",
+    notes: "WCPSS GT Magnet middle school. County-wide lottery. 43% Asian. 43.5% gifted students (top 10% in NC). GS 10/10. Feeds into Enloe GT/IB Magnet High.",
+    ncGrade: "B", ncScore: 70, growthStatus: "Met Growth",
+    collegePrepScore: null, satAvg: null, gradRate: null, apParticipation: null, collegeEnrollRate: null, notableColleges: "N/A (middle school)",
+    sentimentScore: 75,
+    sentimentSummary: "Mixed-to-positive. Strong GT academics. Some note older facilities. Valued for the Enloe magnet pathway.",
+    sentimentSources: "Niche (A, 2.8/5), GreatSchools (10/10)",
+    sourceLinks: { niche: "https://www.niche.com/k12/carnage-middle-school-raleigh-nc/", gs: "https://www.greatschools.org/north-carolina/raleigh/1904-Carnage-Middle/" },
+  },
+  {
+    name: "Ligon GT Magnet Middle",
+    type: "Magnet",
+    grades: "6-8",
+    address: "706 E Lenoir St, Raleigh, NC 27601",
+    yourZoned: false, distance: "20 mi",
+    students: 904, studentTeacherRatio: 14, mathProficiency: 65, readingProficiency: 70,
+    nicheGrade: "A", greatSchoolsRating: 6, tuition: 0, diversityIndex: 0.68,
+    asianPct: 6.0, hispanicPct: 13.0, whitePct: 47.0, blackPct: 29.0, multiracialPct: 4.0,
+    economicDisadvantaged: 32, giftedProgram: true, calendar: "Traditional",
+    stateRank: "#40 Best Public Middle School in NC (Niche)",
+    schoolPath: "Various Elementary \u2192 Ligon GT Magnet Middle \u2192 Enloe GT/IB Magnet High",
+    specialPrograms: "GT/AIG Basics Magnet, 17 sports, 6 foreign languages + ASL, Piano, Orchestra, Band, Dance, Chorus, Acting",
+    notes: "WCPSS GT/AIG Basics Magnet middle. County-wide lottery. Known for exceptional arts and language programs. 17 sports. 14:1 ratio. Feeds into Enloe GT/IB Magnet High.",
+    ncGrade: "B", ncScore: 70, growthStatus: "Met Growth",
+    collegePrepScore: null, satAvg: null, gradRate: null, apParticipation: null, collegeEnrollRate: null, notableColleges: "N/A (middle school)",
+    sentimentScore: 76,
+    sentimentSummary: "Positive. Strong arts and language offerings are a standout. 17 sports and diverse extracurriculars. Valued as an Enloe feeder.",
+    sentimentSources: "Niche (A, 3.5/5), GreatSchools (6/10)",
+    sourceLinks: { niche: "https://www.niche.com/k12/ligon-middle-school-raleigh-nc/", gs: "https://www.greatschools.org/north-carolina/raleigh/1929-Ligon-Middle/" },
+  },
+  {
+    name: "Enloe GT/IB Magnet High",
+    type: "Magnet",
+    grades: "9-12",
+    address: "128 Clarendon Crescent, Raleigh, NC 27610",
+    yourZoned: false, distance: "20 mi",
+    students: 2538, studentTeacherRatio: 17, mathProficiency: 61, readingProficiency: 84,
+    nicheGrade: "A+", greatSchoolsRating: 8, tuition: 0, diversityIndex: 0.75,
+    asianPct: 20.0, hispanicPct: 14.0, whitePct: 37.0, blackPct: 24.0, multiracialPct: 5.0,
+    economicDisadvantaged: 28, giftedProgram: true, calendar: "Traditional",
+    stateRank: "#31 in NC (U.S. News), #2 Magnet HS in Raleigh (Niche)",
+    schoolPath: "Washington/Carnage/Ligon Magnet \u2192 Enloe GT/IB Magnet High",
+    specialPrograms: "IB Programme, 35 AP courses (77% participation, 85% pass rate), GT Magnet, Humanities/Sciences/Arts, SAT avg 1311",
+    notes: "Premier GT/IB magnet HS in Wake County. County-wide lottery. 35 AP courses, 85% pass rate. SAT avg 1311 (#3 in NC public schools). IB Programme. 51% gifted. 91% grad rate. $15M+ in scholarships annually.",
+    ncGrade: "B", ncScore: 78, growthStatus: "Exceeded Growth",
+    collegePrepScore: 82, satAvg: 1311, gradRate: 91, apParticipation: 77, collegeEnrollRate: 85, notableColleges: "UNC Chapel Hill, NC State, Duke, Oxford, American University, Wake Forest, Virginia Tech, Georgia Tech",
+    sentimentScore: 82,
+    sentimentSummary: "Very positive. 35 AP courses and IB programme praised. Strong arts and humanities. Large school but rich in opportunities.",
+    sentimentSources: "Niche (A+, 3.8/5), GreatSchools (8/10), U.S. News (#31 NC)",
+    sourceLinks: { niche: "https://www.niche.com/k12/william-g-enloe-high-school-raleigh-nc/", usnews: "https://www.usnews.com/education/best-high-schools/north-carolina/districts/wake-county-schools/william-g-enloe-high-school-14753" },
+  },
+
 ];
 
 const FACTOR_DEFAULTS = [
@@ -729,7 +835,7 @@ export default function SchoolDashboard() {
 
   const tw = factors.reduce((s, f) => s + f.weight, 0);
   const fc = { academic: "#4ecdc4", diversity: "#ff6b6b", asianRep: "#ff922b", sentiment: "#e879a8", ratio: "#ffd93d", continuity: "#c084fc", cost: "#6bcb77", gifted: "#74c0fc" };
-  const tc = t => { if (t.includes("Montessori")) return "#c084fc"; if (t.includes("Private")) return "#ffd93d"; if (t.includes("Charter")) return "#ff6b6b"; if (t.includes("New")) return "#ff922b"; if (t.includes("Middle")) return "#74c0fc"; if (t.includes("High")) return "#e879a8"; return "#4ecdc4"; };
+  const tc = t => { if (t.includes("Montessori")) return "#c084fc"; if (t.includes("Private")) return "#ffd93d"; if (t.includes("Magnet") ? "#9b59b6" : t.includes("Charter")) return "#ff6b6b"; if (t.includes("New")) return "#ff922b"; if (t.includes("Middle")) return "#74c0fc"; if (t.includes("High")) return "#e879a8"; return "#4ecdc4"; };
 
   return (
     <div style={{ fontFamily: "'DM Sans','Segoe UI',sans-serif", background: "linear-gradient(160deg,#0c0c1d,#111130,#0c0c1d)", color: "#e0e0ff", minHeight: "100vh" }}>
@@ -814,6 +920,7 @@ export default function SchoolDashboard() {
                     <h3 style={{ fontSize: 13.5, fontWeight: 600 }}>{s.name}</h3>
                     <span style={{ fontSize: 10, padding: "1px 8px", borderRadius: 10, background: tc(s.type) + "18", color: tc(s.type), fontWeight: 600 }}>{s.type}</span>
                     <span style={{ fontSize: 10.5, color: "#555" }}>{s.grades}</span>
+                  {!s.yourZoned && <span style={{ fontSize: 8, padding: "1px 6px", borderRadius: 8, fontWeight: 700, marginLeft: 4, background: s.type.includes("Charter") || s.type === "Magnet" ? "rgba(167,139,250,0.15)" : s.type === "Private" || s.type.includes("Montessori") ? "rgba(251,146,60,0.15)" : "rgba(96,165,250,0.15)", color: s.type.includes("Charter") || s.type === "Magnet" ? "#a78bfa" : s.type === "Private" || s.type.includes("Montessori") ? "#fb923c" : "#60a5fa" }}>{s.type.includes("Charter") || s.type === "Magnet" ? "LOTTERY" : s.type === "Private" || s.type.includes("Montessori") ? "APPLY" : "TRANSFER"}</span>}
                   </div>
                   <p style={{ fontSize: 10.5, color: "#555", marginTop: 1 }}>{s.distance} | {s.calendar}</p>
                 </div>
@@ -861,7 +968,7 @@ export default function SchoolDashboard() {
                       <div style={{ fontSize: 11, lineHeight: 1.7, color: "#999" }}>
                         <div><strong style={{ color: "#ddd" }}>Niche:</strong> {s.nicheGrade}{s.greatSchoolsRating ? ` | GS: ${s.greatSchoolsRating}/10` : ""}</div>
                         <div><strong style={{ color: "#ddd" }}>Rank:</strong> {s.stateRank}</div>
-                        <div><strong style={{ color: "#ddd" }}>Path:</strong> {s.schoolPath}</div>
+                        <div style={{ background: "rgba(78,205,196,0.08)", border: "1px solid rgba(78,205,196,0.25)", borderRadius: 8, padding: "8px 12px", marginTop: 6 }}><strong style={{ color: "#4ecdc4", fontSize: 12 }}>K-12 Pathway:</strong><div style={{ color: "#ccc", fontSize: 13, marginTop: 4, letterSpacing: 0.3 }}>{s.schoolPath}</div></div>
                         <div><strong style={{ color: "#ddd" }}>Programs:</strong> {s.specialPrograms}</div>
                       </div>
                       <div style={{ marginTop: 6, fontSize: 10.5 }}>
