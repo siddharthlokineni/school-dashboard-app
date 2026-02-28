@@ -1,0 +1,455 @@
+import { useState, useMemo } from "react";
+
+const SOURCES = [
+  { id: "niche", name: "Niche.com", url: "https://www.niche.com", desc: "Grades, rankings, demographics, reviews (2025-26)" },
+  { id: "gs", name: "GreatSchools.org", url: "https://www.greatschools.org", desc: "Ratings 1-10, equity data, test scores" },
+  { id: "sd", name: "SchoolDigger.com", url: "https://www.schooldigger.com", desc: "State rankings, proficiency trends" },
+  { id: "usnews", name: "U.S. News Education", url: "https://www.usnews.com/education/k12", desc: "Rankings, proficiency, student-teacher ratios" },
+  { id: "ncdpi", name: "NC Dept of Public Instruction", url: "https://www.dpi.nc.gov", desc: "Official EOG test scores (2023-24)" },
+  { id: "psr", name: "PublicSchoolReview.com", url: "https://www.publicschoolreview.com", desc: "Diversity indices, enrollment, spending" },
+  { id: "pvsr", name: "PrivateSchoolReview.com", url: "https://www.privateschoolreview.com", desc: "Private school tuition, acceptance rates" },
+  { id: "wcpss", name: "WCPSS Assignment Lookup", url: "https://osageo.wcpss.net/assignment-lookup/", desc: "Official base school assignment tool" },
+];
+
+const SCHOOLS = [
+  {
+    name: "Holly Springs Elementary",
+    type: "Public",
+    grades: "PK-5",
+    address: "401 Holly Springs Rd, Holly Springs, NC 27540",
+    yourZoned: true,
+    distance: "3.2 mi from your address",
+    students: 907, studentTeacherRatio: 14, mathProficiency: 83, readingProficiency: 80,
+    nicheGrade: "A", greatSchoolsRating: 9, tuition: 0, diversityIndex: 0.65,
+    asianPct: 12.9, hispanicPct: 14.1, whitePct: 57.4, blackPct: 8.5, multiracialPct: 7.1,
+    economicDisadvantaged: 17, giftedProgram: true, calendar: "Traditional",
+    stateRank: "#37 of 1,445 elementary schools in NC",
+    schoolPath: "Lufkin Road Middle (yr-round) or Holly Ridge Middle (traditional), then Holly Springs High",
+    specialPrograms: "AIG/Gifted, ESL, Single Subject Acceleration Math",
+    notes: "Your base-assigned elementary school per WCPSS. Diverse student body with the highest Asian representation in the area (12.9%). Strong math/reading scores. The Single Subject Acceleration Math program aligns grade-level math periods so students can advance without missing other subjects. Top 3% statewide.",
+    sentimentScore: 82,
+    sentimentSummary: "Mostly positive. Parents highlight teacher quality, safety, and welcoming environment. Some concerns about front office communication and large school size. Multiple parents moving from out of state praise it as superior to previous schools.",
+    sentimentSources: "Niche (A, 4.0/5), GreatSchools (9/10), Movoto (18 reviews, 3.5 avg)",
+    sourceLinks: { niche: "https://www.niche.com/k12/holly-springs-elementary-school-holly-springs-nc/", gs: "https://www.greatschools.org/north-carolina/holly-springs/1967-Holly-Springs-Elementary/", usnews: "https://www.usnews.com/education/k12/north-carolina/holly-springs-elementary-216410" },
+  },
+  {
+    name: "Holly Grove Elementary",
+    type: "Public",
+    grades: "PK-5",
+    address: "1451 Avent Ferry Rd, Holly Springs, NC 27540",
+    yourZoned: false, distance: "4.1 mi",
+    students: 897, studentTeacherRatio: 14, mathProficiency: 88, readingProficiency: 80,
+    nicheGrade: "A", greatSchoolsRating: 8, tuition: 0, diversityIndex: 0.58,
+    asianPct: 10.2, hispanicPct: 11.5, whitePct: 63.0, blackPct: 8.0, multiracialPct: 7.3,
+    economicDisadvantaged: 14, giftedProgram: true, calendar: "Traditional",
+    stateRank: "#55 of 1,445 (capped 2025-26)",
+    schoolPath: "Holly Grove Middle, then Holly Springs High",
+    specialPrograms: "AIG/Gifted, STEM activities",
+    notes: "Highest math proficiency in the area at 88%. Currently capped for 2025-26 (overcrowded). Some students reassigned to Rex Road Elementary. Not your zoned school but worth monitoring if boundaries shift.",
+    sentimentScore: 85,
+    sentimentSummary: "Very positive. Parents praise caring teachers, strong academics, and well-managed environment despite large size. Few negative reviews.",
+    sentimentSources: "Niche (A, 2 reviews), GreatSchools (8/10), SchoolDigger (5-star)",
+    sourceLinks: { niche: "https://www.niche.com/k12/holly-grove-elementary-school-holly-springs-nc/" },
+  },
+  {
+    name: "Holly Ridge Elementary",
+    type: "Public",
+    grades: "PK-5",
+    address: "900 Holly Springs Rd, Holly Springs, NC 27540",
+    yourZoned: false, distance: "3.8 mi",
+    students: 751, studentTeacherRatio: 14, mathProficiency: 84, readingProficiency: 75,
+    nicheGrade: "A", greatSchoolsRating: 8, tuition: 0, diversityIndex: 0.52,
+    asianPct: 8.0, hispanicPct: 9.5, whitePct: 68.0, blackPct: 7.5, multiracialPct: 7.0,
+    economicDisadvantaged: 16, giftedProgram: true, calendar: "Traditional",
+    stateRank: "#61 of 1,445 (capped 2025-26)",
+    schoolPath: "Holly Ridge Middle, then Holly Springs High",
+    specialPrograms: "AIG/Gifted, Safety Patrol, Reading Competitions",
+    notes: "Also capped for 2025-26. Active parent community with frequent field trips. Some Holly Springs Elementary students may be reassigned here per 2025-26 plan. Top 5% statewide.",
+    sentimentScore: 88,
+    sentimentSummary: "Highly positive. Parents love field trips, teacher relationships, and strong community feel. Highest parent satisfaction among area schools.",
+    sentimentSources: "Niche (A, 5/5), GreatSchools (8/10), SchoolDigger (5-star, top 4.3%)",
+    sourceLinks: { niche: "https://www.niche.com/k12/holly-ridge-elementary-school-holly-springs-nc/", sd: "https://www.schooldigger.com/go/NC/schools/0472002683/school.aspx" },
+  },
+  {
+    name: "Rex Road Elementary (New 2025)",
+    type: "Public (New)",
+    grades: "K-5",
+    address: "6125 Rex Road, Holly Springs, NC 27540",
+    yourZoned: false, distance: "5.0 mi (est.)",
+    students: 800, studentTeacherRatio: 15, mathProficiency: null, readingProficiency: null,
+    nicheGrade: "N/A (new)", greatSchoolsRating: null, tuition: 0, diversityIndex: 0.60,
+    asianPct: 10.0, hispanicPct: 12.0, whitePct: 60.0, blackPct: 10.0, multiracialPct: 8.0,
+    economicDisadvantaged: null, giftedProgram: true, calendar: "Year-Round (Multi-Track)",
+    stateRank: "New school, no data yet",
+    schoolPath: "TBD middle school, then Holly Springs High",
+    specialPrograms: "AIG/Gifted (expected), Modern learning commons",
+    notes: "Brand new 133,000 sq ft school opened July 2025. Receives students from capped Buckhorn Creek and Holly Grove. Year-round multi-track calendar. No test data yet. Demographics estimated from feeder zones.",
+    sentimentScore: 70,
+    sentimentSummary: "No parent reviews yet (opened July 2025). Community excitement about new facilities. Score is neutral baseline pending reviews.",
+    sentimentSources: "WCPSS website, School Construction News (Dec 2025)",
+    sourceLinks: { wcpss: "https://nc01911451.schoolwires.net/rexroades" },
+  },
+  {
+    name: "Lufkin Road Middle",
+    type: "Public (Middle)",
+    grades: "6-8",
+    address: "1002 Lufkin Road, Apex, NC 27539",
+    yourZoned: true, distance: "2.1 mi from your address",
+    students: 957, studentTeacherRatio: 15, mathProficiency: 65, readingProficiency: 70,
+    nicheGrade: "A", greatSchoolsRating: 10, tuition: 0, diversityIndex: 0.62,
+    asianPct: 11.0, hispanicPct: 13.0, whitePct: 58.0, blackPct: 10.0, multiracialPct: 8.0,
+    economicDisadvantaged: 30, giftedProgram: true, calendar: "Year-Round",
+    stateRank: "#89 in NC (U.S. News), #200 SchoolDigger",
+    schoolPath: "Feeds into Apex High School",
+    specialPrograms: "AIG/Gifted, Clubs, Sports, Algebra readiness",
+    notes: "Your likely base middle school. Year-round calendar. GS 10/10, Niche A. Student growth 89th percentile (92.7/100). Located on Lufkin Road, very close to Lily Orchard. 30% economically disadvantaged.",
+    sentimentScore: 65,
+    sentimentSummary: "Polarized. Official ratings are very high (GS 10/10, Niche A). However, student reviews on Niche cite bullying, poor facility conditions, and restrictive policies. Some parents praise the learning environment.",
+    sentimentSources: "Niche (A, 3.2/5, 5 reviews), GreatSchools (10/10), SchoolDigger (4-star), U.S. News (#89)",
+    sourceLinks: { niche: "https://www.niche.com/k12/lufkin-road-middle-school-apex-nc/", gs: "https://www.greatschools.org/north-carolina/apex/2796-Lufkin-Road-Middle/", usnews: "https://www.usnews.com/education/k12/north-carolina/lufkin-road-middle-265363", sd: "https://www.schooldigger.com/go/NC/schools/0472002490/school.aspx" },
+  },
+  {
+    name: "Holly Springs High",
+    type: "Public (High)",
+    grades: "9-12",
+    address: "5329 Cass Holt Rd, Holly Springs, NC 27540",
+    yourZoned: true, distance: "4.5 mi",
+    students: 2200, studentTeacherRatio: 16, mathProficiency: 55, readingProficiency: 72,
+    nicheGrade: "A", greatSchoolsRating: 7, tuition: 0, diversityIndex: 0.66,
+    asianPct: 10.0, hispanicPct: 14.0, whitePct: 55.0, blackPct: 12.0, multiracialPct: 9.0,
+    economicDisadvantaged: 20, giftedProgram: true, calendar: "Traditional",
+    stateRank: "Top 20% of NC high schools",
+    schoolPath: "Your zoned high school (unless reassigned to Felton Grove)",
+    specialPrograms: "AP courses, STEM, CTE, Sports, Arts",
+    notes: "Your current base high school. Previous principal moved to new Felton Grove High. The 2025-26 reassignment may shift some feeder areas. Diverse student body. Solid AP and extracurricular offerings.",
+    sentimentScore: 72,
+    sentimentSummary: "Generally positive. Parents appreciate diversity and extracurriculars. Some reviews mention growing class sizes due to population boom. Sports and arts well regarded.",
+    sentimentSources: "Niche (A, 7 reviews), GreatSchools (7/10)",
+    sourceLinks: { niche: "https://www.niche.com/k12/holly-springs-high-school-holly-springs-nc/" },
+  },
+  {
+    name: "Felton Grove High (New 2025)",
+    type: "Public (High, New)",
+    grades: "9-10 (expanding to 9-12)",
+    address: "8550 Stephenson Road, Apex, NC 27539",
+    yourZoned: false, distance: "1.5 mi from your address",
+    students: 450, studentTeacherRatio: 15, mathProficiency: null, readingProficiency: null,
+    nicheGrade: "N/A (new)", greatSchoolsRating: null, tuition: 0, diversityIndex: 0.65,
+    asianPct: 10.0, hispanicPct: 13.0, whitePct: 57.0, blackPct: 12.0, multiracialPct: 8.0,
+    economicDisadvantaged: null, giftedProgram: true, calendar: "Traditional",
+    stateRank: "New school, no data yet",
+    schoolPath: "Opening with 9th-10th, expanding yearly to full 9-12",
+    specialPrograms: "Modern facilities, designed for 2,200+ at capacity",
+    notes: "Opened August 2025 on Stephenson Road, only 1.5 miles from Lily Orchard. Currently 9th-10th only. Your child entering K in 2027 would reach HS around 2036 when fully operational. Named after historic Felton Grove community.",
+    sentimentScore: 72,
+    sentimentSummary: "No reviews yet (opened Aug 2025). Community excitement about modern facilities and proximity. Score is neutral baseline pending reviews.",
+    sentimentSources: "CBS17, WRAL, WCPSS enrollment proposal",
+    sourceLinks: { wcpss: "https://www.wcpss.net/Page/58487" },
+  },
+  {
+    name: "Pine Springs Preparatory Academy",
+    type: "Charter (Free)",
+    grades: "K-8",
+    address: "220 Rosewood Centre Dr, Holly Springs, NC 27540",
+    yourZoned: false, distance: "5.2 mi",
+    students: 1268, studentTeacherRatio: 17, mathProficiency: 66, readingProficiency: 71,
+    nicheGrade: "A", greatSchoolsRating: 5, tuition: 0, diversityIndex: 0.47,
+    asianPct: 9.0, hispanicPct: 7.0, whitePct: 72.0, blackPct: 4.0, multiracialPct: 8.0,
+    economicDisadvantaged: 1, giftedProgram: false, calendar: "Traditional",
+    stateRank: "Top 20% Elem, Top 15% Middle",
+    schoolPath: "K-8 on campus, no middle school transition",
+    specialPrograms: "Core Knowledge, Singapore Math, Blended/Virtual options",
+    notes: "K-8 continuity avoids middle school transition. Singapore Math. Lottery admission (Jan-Feb). Lower diversity index (0.47 vs 0.71 state avg). Only 59% licensed teachers per U.S. News. Free as public charter.",
+    sentimentScore: 68,
+    sentimentSummary: "Polarized. Niche A but GS only 5/10. Parent reviews flag diversity and inclusivity concerns. Multiple reviews mention racial climate issues for minority families.",
+    sentimentSources: "Niche (A, 4.2/5, 6 reviews), GreatSchools (5/10)",
+    sourceLinks: { niche: "https://www.niche.com/k12/pine-springs-preparatory-academy-holly-springs-nc/", psr: "https://www.publicschoolreview.com/pine-springs-preparatory-academy-profile" },
+  },
+  {
+    name: "Thales Academy Holly Springs",
+    type: "Private",
+    grades: "PK-10 (expanding to 12)",
+    address: "11244 Holly Springs New Hill Rd, Holly Springs, NC 27540",
+    yourZoned: false, distance: "4.8 mi",
+    students: 732, studentTeacherRatio: 14, mathProficiency: null, readingProficiency: null,
+    nicheGrade: "A", greatSchoolsRating: null, tuition: 7000, diversityIndex: 0.35,
+    asianPct: 6.0, hispanicPct: 5.0, whitePct: 78.0, blackPct: 4.0, multiracialPct: 7.0,
+    economicDisadvantaged: null, giftedProgram: false, calendar: "Traditional",
+    stateRank: "N/A (Private)",
+    schoolPath: "K-10 on campus, expanding to K-12",
+    specialPrograms: "Direct Instruction, Classical Curriculum, Latin, Character Education",
+    notes: "Affordable private at $7K/year. Classical curriculum with Latin. Reviews note bias concerns for minority students. 78% white. Lowest diversity index (0.35).",
+    sentimentScore: 62,
+    sentimentSummary: "Mixed. Strong positives on academics and affordability. Multiple reviews flag lack of diversity, bias toward minority students, and bullying. One student cited ethnic bias.",
+    sentimentSources: "Niche (A, 3.8/5, 14 reviews), Movoto, PrivateSchoolReview",
+    sourceLinks: { niche: "https://www.niche.com/k12/thales-academy-holly-springs-holly-springs-nc/", pvsr: "https://www.privateschoolreview.com/thales-academy-holly-springs-pre-k-5-profile" },
+  },
+  {
+    name: "New School Montessori Center",
+    type: "Private (Montessori)",
+    grades: "Infant through 8th",
+    address: "5617 Sunset Lake Rd, Holly Springs, NC 27540",
+    yourZoned: false, distance: "2.8 mi",
+    students: 259, studentTeacherRatio: 8, mathProficiency: null, readingProficiency: null,
+    nicheGrade: "B+", greatSchoolsRating: null, tuition: 12000, diversityIndex: 0.55,
+    asianPct: 12.0, hispanicPct: 8.0, whitePct: 60.0, blackPct: 10.0, multiracialPct: 10.0,
+    economicDisadvantaged: null, giftedProgram: false, calendar: "Traditional",
+    stateRank: "N/A (Private)",
+    schoolPath: "Through 8th grade on campus",
+    specialPrograms: "Montessori Method, Mixed-age classrooms, Self-directed learning",
+    notes: "Established 1984. Best ratio at 8:1. Child-led learning. Higher tuition but small nurturing environment. 12% Asian. 90% acceptance. Close to your address on Sunset Lake Rd.",
+    sentimentScore: 76,
+    sentimentSummary: "Positive but limited reviews. Long-established with loyal parent base. Small community feel valued.",
+    sentimentSources: "Niche (B+), PrivateSchoolReview (90% acceptance), Yelp",
+    sourceLinks: { niche: "https://www.niche.com/k12/new-school-montessori-center-holly-springs-nc/", pvsr: "https://www.privateschoolreview.com/new-school-montessori-center-profile" },
+  },
+];
+
+const FACTOR_DEFAULTS = [
+  { key: "academic", label: "Academic Excellence", weight: 22, desc: "Math/reading proficiency, state rankings" },
+  { key: "diversity", label: "Diversity and Inclusion", weight: 18, desc: "Racial/ethnic diversity index" },
+  { key: "asianRep", label: "Asian Population %", weight: 10, desc: "Asian student enrollment %" },
+  { key: "sentiment", label: "Online Sentiment", weight: 12, desc: "Aggregated review sentiment" },
+  { key: "ratio", label: "Student-Teacher Ratio", weight: 12, desc: "Lower = more attention" },
+  { key: "continuity", label: "K-8/12 Continuity", weight: 8, desc: "Avoids transitions" },
+  { key: "cost", label: "Affordability", weight: 8, desc: "Tuition cost" },
+  { key: "gifted", label: "Gifted/Advanced", weight: 10, desc: "AIG, enrichment, acceleration" },
+];
+
+function computeScore(school, factors) {
+  const scores = {};
+  const math = school.mathProficiency || 60;
+  const reading = school.readingProficiency || 58;
+  scores.academic = (math + reading) / 2;
+  scores.diversity = school.diversityIndex * 100;
+  scores.asianRep = Math.min(100, school.asianPct * 6.5);
+  scores.sentiment = school.sentimentScore;
+  scores.ratio = Math.max(0, Math.min(100, 100 - (school.studentTeacherRatio - 8) * 5));
+  const g = school.grades.toLowerCase();
+  if (g.includes("12") || g.includes("10")) scores.continuity = 95;
+  else if (g.includes("8") || g.includes("9")) scores.continuity = 85;
+  else scores.continuity = 55;
+  if (school.tuition === 0) scores.cost = 100;
+  else if (school.tuition <= 7000) scores.cost = 60;
+  else scores.cost = 25;
+  scores.gifted = school.giftedProgram ? 85 : 40;
+  const tw = factors.reduce((s, f) => s + f.weight, 0);
+  const w = factors.reduce((s, f) => s + (scores[f.key] * f.weight) / tw, 0);
+  return { subscores: scores, total: w };
+}
+
+function ScoreBar({ value, color }) {
+  return (
+    <div style={{ width: "100%", background: "#1e1e38", borderRadius: 6, height: 7, overflow: "hidden" }}>
+      <div style={{ width: `${Math.min(100, Math.max(0, value))}%`, background: color || "#4ecdc4", height: "100%", borderRadius: 6, transition: "width 0.5s" }} />
+    </div>
+  );
+}
+
+export default function SchoolDashboard() {
+  const [factors, setFactors] = useState(FACTOR_DEFAULTS);
+  const [sel, setSel] = useState(null);
+  const [lvl, setLvl] = useState("Elementary");
+  const [showW, setShowW] = useState(false);
+  const [showS, setShowS] = useState(false);
+  const [sort, setSort] = useState("total");
+
+  const scored = useMemo(() => SCHOOLS.map(s => ({ ...s, ...computeScore(s, factors) })), [factors]);
+  const filtered = useMemo(() => {
+    let list = scored;
+    if (lvl === "Elementary") list = list.filter(s => s.grades.match(/K-5|K-8|PK-5|PK-10|Infant/i));
+    else if (lvl === "Middle") list = list.filter(s => s.grades.match(/6-8|K-8|Infant.*8/i));
+    else if (lvl === "High") list = list.filter(s => s.grades.match(/9-1|PK-10|K-10/i));
+    const sorters = { total: (a, b) => b.total - a.total, math: (a, b) => (b.mathProficiency||0) - (a.mathProficiency||0), asian: (a, b) => b.asianPct - a.asianPct, diversity: (a, b) => b.diversityIndex - a.diversityIndex, sentiment: (a, b) => b.sentimentScore - a.sentimentScore, ratio: (a, b) => a.studentTeacherRatio - b.studentTeacherRatio };
+    return [...list].sort(sorters[sort] || sorters.total);
+  }, [scored, lvl, sort]);
+
+  const tw = factors.reduce((s, f) => s + f.weight, 0);
+  const fc = { academic: "#4ecdc4", diversity: "#ff6b6b", asianRep: "#ff922b", sentiment: "#e879a8", ratio: "#ffd93d", continuity: "#c084fc", cost: "#6bcb77", gifted: "#74c0fc" };
+  const tc = t => { if (t.includes("Montessori")) return "#c084fc"; if (t.includes("Private")) return "#ffd93d"; if (t.includes("Charter")) return "#ff6b6b"; if (t.includes("New")) return "#ff922b"; if (t.includes("Middle")) return "#74c0fc"; if (t.includes("High")) return "#e879a8"; return "#4ecdc4"; };
+
+  return (
+    <div style={{ fontFamily: "'DM Sans','Segoe UI',sans-serif", background: "linear-gradient(160deg,#0c0c1d,#111130,#0c0c1d)", color: "#e0e0ff", minHeight: "100vh" }}>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');*{box-sizing:border-box;margin:0;padding:0}::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#0c0c1d}::-webkit-scrollbar-thumb{background:#2d2d5a;border-radius:3px}input[type=range]{-webkit-appearance:none;width:100%;height:4px;background:#1e1e38;border-radius:2px;outline:none}input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#4ecdc4;cursor:pointer}a{color:#74c0fc;text-decoration:none}a:hover{text-decoration:underline}`}</style>
+
+      <div style={{ padding: "28px 24px 20px", borderBottom: "1px solid #1a1a3e", background: "linear-gradient(180deg,rgba(78,205,196,0.05),transparent)" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <h1 style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 20, fontWeight: 700, background: "linear-gradient(90deg,#4ecdc4,#c084fc)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", marginBottom: 6 }}>School Finder / 3625 Lily Orchard Way, Apex NC 27539</h1>
+          <p style={{ color: "#8888aa", fontSize: 12.5, maxWidth: 800, lineHeight: 1.6 }}>
+            Kindergarten 2027 | Pathway: <strong style={{ color: "#4ecdc4" }}>Holly Springs Elem</strong> &rarr; <strong style={{ color: "#74c0fc" }}>Lufkin Road Middle</strong> &rarr; <strong style={{ color: "#e879a8" }}>Holly Springs / Felton Grove High</strong>
+            <br/>{SCHOOLS.length} schools | {factors.length} weighted factors | 7+ data sources
+          </p>
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "20px 24px" }}>
+        <div style={{ background: "linear-gradient(135deg,rgba(78,205,196,0.08),rgba(255,107,107,0.06))", border: "1px solid #2d2d5a", borderRadius: 12, padding: 14, marginBottom: 20, fontSize: 12, lineHeight: 1.6 }}>
+          <strong style={{ color: "#4ecdc4" }}>Your Base Assignment:</strong><span style={{ color: "#ccc", marginLeft: 6 }}>Holly Springs Elementary | Lufkin Road Middle (year-round) | Holly Springs High</span>
+          <br/><strong style={{ color: "#ff6b6b" }}>Verify:</strong><span style={{ color: "#aaa", marginLeft: 6 }}>2025-26 reassignment opened Felton Grove High and Rex Road Elem nearby. Use <a href="https://osageo.wcpss.net/assignment-lookup/" target="_blank" rel="noopener noreferrer">WCPSS Lookup</a> or call 919-431-7400 to confirm for 2027-28.</span>
+        </div>
+
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 20, alignItems: "center" }}>
+          <div style={{ display: "flex", gap: 5 }}>
+            {["Elementary", "Middle", "High", "All"].map(t => (
+              <button key={t} onClick={() => setLvl(t)} style={{ padding: "5px 14px", borderRadius: 18, border: "1px solid " + (lvl === t ? "#4ecdc4" : "#2d2d5a"), background: lvl === t ? "rgba(78,205,196,0.12)" : "transparent", color: lvl === t ? "#4ecdc4" : "#8888aa", cursor: "pointer", fontSize: 11.5, fontWeight: 600 }}>{t}</button>
+            ))}
+          </div>
+          <select value={sort} onChange={e => setSort(e.target.value)} style={{ padding: "5px 10px", borderRadius: 8, border: "1px solid #2d2d5a", background: "#111130", color: "#e0e0ff", fontSize: 11.5, cursor: "pointer" }}>
+            <option value="total">Sort: Weighted Score</option><option value="math">Sort: Math %</option><option value="asian">Sort: Asian %</option><option value="diversity">Sort: Diversity</option><option value="sentiment">Sort: Sentiment</option><option value="ratio">Sort: Ratio</option>
+          </select>
+          <button onClick={() => setShowW(!showW)} style={{ padding: "5px 14px", borderRadius: 18, border: "1px solid #c084fc", background: showW ? "rgba(192,132,252,0.12)" : "transparent", color: "#c084fc", cursor: "pointer", fontSize: 11.5, fontWeight: 600 }}>Adjust Weights</button>
+          <button onClick={() => setShowS(!showS)} style={{ padding: "5px 14px", borderRadius: 18, border: "1px solid #74c0fc", background: showS ? "rgba(116,192,252,0.12)" : "transparent", color: "#74c0fc", cursor: "pointer", fontSize: 11.5, fontWeight: 600, marginLeft: "auto" }}>Data Sources</button>
+        </div>
+
+        {showS && (
+          <div style={{ background: "#16162e", border: "1px solid #2d2d5a", borderRadius: 12, padding: 18, marginBottom: 20 }}>
+            <h3 style={{ fontSize: 13, fontWeight: 600, color: "#74c0fc", marginBottom: 10 }}>Data Sources and Methodology</h3>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))", gap: 8 }}>
+              {SOURCES.map(s => (<div key={s.id} style={{ fontSize: 11.5, lineHeight: 1.5 }}><a href={s.url} target="_blank" rel="noopener noreferrer" style={{ fontWeight: 600 }}>{s.name}</a><span style={{ color: "#777", marginLeft: 5 }}>{s.desc}</span></div>))}
+            </div>
+            <div style={{ marginTop: 10, fontSize: 10.5, color: "#555", lineHeight: 1.6 }}>
+              <strong style={{ color: "#999" }}>Sentiment:</strong> Aggregated from Niche, GreatSchools, Movoto, Yelp. Formula: (avg rating / 5) x 80 + (positive ratio x 20). New schools = 70 baseline.
+              <br/><strong style={{ color: "#999" }}>Diversity Index:</strong> 0 to 1. NC avg: 0.71. From NCES/PublicSchoolReview.
+              <br/><strong style={{ color: "#999" }}>Test Scores:</strong> NC EOG 2023-24. Private/new schools lack data.
+              <br/><strong style={{ color: "#999" }}>Assignment:</strong> MLS (RocketHomes, Estately, Homes.com) cross-ref with WCPSS.
+              <br/><strong style={{ color: "#999" }}>Updated:</strong> February 2026.
+            </div>
+          </div>
+        )}
+
+        {showW && (
+          <div style={{ background: "#16162e", border: "1px solid #2d2d5a", borderRadius: 12, padding: 18, marginBottom: 20 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 10 }}>
+              <h3 style={{ fontSize: 13, fontWeight: 600, color: "#c084fc" }}>Customize Weights</h3>
+              <span style={{ fontSize: 11.5, color: tw === 100 ? "#4ecdc4" : "#ff6b6b" }}>Total: {tw}%{tw !== 100 && " (adjust to 100%)"}</span>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))", gap: 10 }}>
+              {factors.map(f => (
+                <div key={f.key} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <div style={{ width: 7, height: 7, borderRadius: 4, background: fc[f.key], flexShrink: 0 }} />
+                  <span style={{ fontSize: 11.5, width: 140, flexShrink: 0, color: "#bbb" }}>{f.label}</span>
+                  <input type="range" min={0} max={50} value={f.weight} onChange={e => setFactors(p => p.map(x => x.key === f.key ? { ...x, weight: +e.target.value } : x))} style={{ flex: 1 }} />
+                  <span style={{ fontSize: 11.5, fontFamily: "'JetBrains Mono',monospace", color: fc[f.key], width: 28, textAlign: "right" }}>{f.weight}%</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          {filtered.map((s, i) => (
+            <div key={s.name} onClick={() => setSel(sel === s.name ? null : s.name)} style={{
+              background: sel === s.name ? "#1a1a3e" : s.yourZoned ? "linear-gradient(135deg,rgba(78,205,196,0.04),#12122a)" : "#12122a",
+              border: "1px solid " + (s.yourZoned ? "#4ecdc450" : sel === s.name ? "#4ecdc4" : "#1a1a3e"),
+              borderRadius: 10, padding: 14, cursor: "pointer", transition: "all 0.25s", position: "relative",
+            }}>
+              {s.yourZoned && <div style={{ position: "absolute", top: 8, right: 12, fontSize: 9, fontWeight: 700, color: "#4ecdc4", background: "rgba(78,205,196,0.12)", padding: "2px 8px", borderRadius: 10 }}>YOUR ZONED</div>}
+              <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+                <div style={{ width: 32, height: 32, borderRadius: 7, display: "flex", alignItems: "center", justifyContent: "center", background: i === 0 ? "linear-gradient(135deg,#ffd93d,#ff922b)" : i === 1 ? "linear-gradient(135deg,#c0c0c0,#777)" : i === 2 ? "linear-gradient(135deg,#cd7f32,#a0522d)" : "#1a1a3e", color: i < 3 ? "#000" : "#777", fontWeight: 700, fontSize: 13, fontFamily: "'JetBrains Mono',monospace", flexShrink: 0 }}>#{i + 1}</div>
+                <div style={{ flex: 1, minWidth: 170 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                    <h3 style={{ fontSize: 13.5, fontWeight: 600 }}>{s.name}</h3>
+                    <span style={{ fontSize: 10, padding: "1px 8px", borderRadius: 10, background: tc(s.type) + "18", color: tc(s.type), fontWeight: 600 }}>{s.type}</span>
+                    <span style={{ fontSize: 10.5, color: "#555" }}>{s.grades}</span>
+                  </div>
+                  <p style={{ fontSize: 10.5, color: "#555", marginTop: 1 }}>{s.distance} | {s.calendar}</p>
+                </div>
+                <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+                  {[
+                    { l: "Math", v: s.mathProficiency ? s.mathProficiency + "%" : "N/A", c: "#4ecdc4" },
+                    { l: "Read", v: s.readingProficiency ? s.readingProficiency + "%" : "N/A", c: "#74c0fc" },
+                    { l: "Asian", v: s.asianPct + "%", c: "#ff922b" },
+                    { l: "Div", v: s.diversityIndex.toFixed(2), c: s.diversityIndex >= 0.6 ? "#6bcb77" : s.diversityIndex >= 0.5 ? "#ffd93d" : "#ff6b6b" },
+                    { l: "Sent.", v: s.sentimentScore + "", c: s.sentimentScore >= 80 ? "#6bcb77" : s.sentimentScore >= 70 ? "#ffd93d" : "#ff6b6b" },
+                    { l: "Ratio", v: s.studentTeacherRatio + ":1", c: "#e0e0ff" },
+                    { l: "Cost", v: s.tuition === 0 ? "Free" : "$" + (s.tuition / 1000).toFixed(0) + "K", c: s.tuition === 0 ? "#6bcb77" : "#ffd93d" },
+                  ].map(m => (<div key={m.l} style={{ textAlign: "center", minWidth: 38 }}><div style={{ fontSize: 9.5, color: "#666" }}>{m.l}</div><div style={{ fontSize: 13, fontWeight: 700, color: m.c, fontFamily: "'JetBrains Mono',monospace" }}>{m.v}</div></div>))}
+                  <div style={{ width: 48, height: 48, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", background: `conic-gradient(${s.total >= 78 ? "#4ecdc4" : s.total >= 65 ? "#ffd93d" : "#ff6b6b"} ${s.total * 3.6}deg, #1a1a2e ${s.total * 3.6}deg)`, flexShrink: 0 }}>
+                    <div style={{ width: 38, height: 38, borderRadius: "50%", background: "#12122a", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 13, fontFamily: "'JetBrains Mono',monospace", color: s.total >= 78 ? "#4ecdc4" : s.total >= 65 ? "#ffd93d" : "#ff6b6b" }}>{Math.round(s.total)}</div>
+                  </div>
+                </div>
+              </div>
+              {sel === s.name && (
+                <div style={{ marginTop: 14, paddingTop: 14, borderTop: "1px solid #2d2d4a" }}>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(230px,1fr))", gap: 14 }}>
+                    <div>
+                      <h4 style={{ fontSize: 11.5, fontWeight: 600, marginBottom: 7, color: "#c084fc" }}>Factor Scores</h4>
+                      {factors.map(f => (<div key={f.key} style={{ marginBottom: 5 }}><div style={{ display: "flex", justifyContent: "space-between", fontSize: 10.5, marginBottom: 1.5 }}><span style={{ color: "#999" }}>{f.label} ({f.weight}%)</span><span style={{ fontFamily: "'JetBrains Mono',monospace", color: fc[f.key] }}>{Math.round(s.subscores[f.key])}</span></div><ScoreBar value={s.subscores[f.key]} color={fc[f.key]} /></div>))}
+                    </div>
+                    <div>
+                      <h4 style={{ fontSize: 11.5, fontWeight: 600, marginBottom: 7, color: "#ff6b6b" }}>Demographics</h4>
+                      {[{ l: "White", p: s.whitePct, c: "#6b7db3" }, { l: "Asian", p: s.asianPct, c: "#ff922b" }, { l: "Hispanic", p: s.hispanicPct, c: "#ffd93d" }, { l: "Black", p: s.blackPct, c: "#c084fc" }, { l: "Multi/Other", p: s.multiracialPct, c: "#4ecdc4" }].map(d => (
+                        <div key={d.l} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 3 }}>
+                          <div style={{ width: 7, height: 7, borderRadius: 4, background: d.c, flexShrink: 0 }} />
+                          <span style={{ width: 70, color: "#999", fontSize: 10.5 }}>{d.l}</span>
+                          <div style={{ flex: 1, background: "#1e1e38", borderRadius: 3, height: 5, overflow: "hidden" }}><div style={{ width: `${d.p}%`, height: "100%", background: d.c, borderRadius: 3 }} /></div>
+                          <span style={{ fontFamily: "'JetBrains Mono',monospace", width: 32, textAlign: "right", color: "#ccc", fontSize: 10.5 }}>{d.p}%</span>
+                        </div>
+                      ))}
+                      <p style={{ fontSize: 10.5, color: "#555", marginTop: 5 }}>{s.students} students | DI: {s.diversityIndex.toFixed(2)} (NC: 0.71){s.economicDisadvantaged != null ? ` | ${s.economicDisadvantaged}% econ. disadv.` : ""}</p>
+                    </div>
+                    <div>
+                      <h4 style={{ fontSize: 11.5, fontWeight: 600, marginBottom: 7, color: "#e879a8" }}>Sentiment ({s.sentimentScore}/100)</h4>
+                      <p style={{ fontSize: 10.5, color: "#aaa", lineHeight: 1.55, marginBottom: 6 }}>{s.sentimentSummary}</p>
+                      <p style={{ fontSize: 10, color: "#555" }}>Sources: {s.sentimentSources}</p>
+                    </div>
+                    <div>
+                      <h4 style={{ fontSize: 11.5, fontWeight: 600, marginBottom: 7, color: "#ffd93d" }}>Details</h4>
+                      <div style={{ fontSize: 11, lineHeight: 1.7, color: "#999" }}>
+                        <div><strong style={{ color: "#ddd" }}>Niche:</strong> {s.nicheGrade}{s.greatSchoolsRating ? ` | GS: ${s.greatSchoolsRating}/10` : ""}</div>
+                        <div><strong style={{ color: "#ddd" }}>Rank:</strong> {s.stateRank}</div>
+                        <div><strong style={{ color: "#ddd" }}>Path:</strong> {s.schoolPath}</div>
+                        <div><strong style={{ color: "#ddd" }}>Programs:</strong> {s.specialPrograms}</div>
+                      </div>
+                      <div style={{ marginTop: 6, fontSize: 10.5 }}>
+                        <strong style={{ color: "#666" }}>View:</strong>{" "}
+                        {Object.entries(s.sourceLinks).map(([k, u], j) => (<span key={k}>{j > 0 && " | "}<a href={u} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>{SOURCES.find(x => x.id === k)?.name || k}</a></span>))}
+                      </div>
+                    </div>
+                  </div>
+                  <div style={{ marginTop: 10, background: "rgba(78,205,196,0.04)", borderRadius: 8, padding: 10, fontSize: 11, color: "#aaa", lineHeight: 1.55 }}>
+                    <strong style={{ color: "#ddd" }}>Analysis:</strong> {s.notes}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Pathway */}
+        <div style={{ marginTop: 28, background: "#16162e", border: "1px solid #2d2d5a", borderRadius: 12, padding: 20 }}>
+          <h3 style={{ fontSize: 15, fontWeight: 700, marginBottom: 14, color: "#4ecdc4", fontFamily: "'JetBrains Mono',monospace" }}>Your K-12 Pathway</h3>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))", gap: 16, fontSize: 12.5, lineHeight: 1.65, color: "#aaa" }}>
+            <div>
+              <h4 style={{ color: "#4ecdc4", fontSize: 12.5, marginBottom: 5 }}>Elementary (2027-2032)</h4>
+              <p><strong style={{ color: "#e0e0ff" }}>Holly Springs Elementary</strong> is your base school. 83% math, 80% reading, Niche A, GS 9/10. Highest Asian % (12.9%) and diversity (0.65). Single Subject Acceleration Math stands out for advanced learners.</p>
+              <p style={{ marginTop: 6 }}><strong style={{ color: "#999" }}>Alt:</strong> <strong style={{ color: "#e0e0ff" }}>Pine Springs Prep</strong> (charter, free, K-8, lottery) avoids middle school transition. Singapore Math. Lower diversity.</p>
+            </div>
+            <div>
+              <h4 style={{ color: "#74c0fc", fontSize: 12.5, marginBottom: 5 }}>Middle (2032-2035)</h4>
+              <p><strong style={{ color: "#e0e0ff" }}>Lufkin Road Middle</strong> is your base (year-round). GS 10/10, Niche A, U.S. News #89 in NC. 2.1 mi from home. Growth score 89th percentile. Mixed student reviews but strong institutional ratings.</p>
+              <p style={{ marginTop: 6 }}><strong style={{ color: "#999" }}>Note:</strong> Holly Ridge Middle (traditional calendar) may be an option. Contact WCPSS.</p>
+            </div>
+            <div>
+              <h4 style={{ color: "#e879a8", fontSize: 12.5, marginBottom: 5 }}>High (2035-2039)</h4>
+              <p><strong style={{ color: "#e0e0ff" }}>Holly Springs High</strong> is current base. Niche A. <strong style={{ color: "#e0e0ff" }}>Felton Grove High</strong> on Stephenson Rd (1.5 mi away) opened 2025 and will be fully 9-12 by ~2028. Your child may be assigned there by 2035. Monitor WCPSS.</p>
+            </div>
+            <div>
+              <h4 style={{ color: "#6bcb77", fontSize: 12.5, marginBottom: 5 }}>Action Items</h4>
+              <p>1) Confirm assignment: <a href="https://osageo.wcpss.net/assignment-lookup/" target="_blank" rel="noopener noreferrer">WCPSS Lookup</a> or 919-431-7400
+              <br/>2) Charter lottery: Apply Jan-Feb 2027
+              <br/>3) Tour top 3 schools in person
+              <br/>4) Ask about AIG screening and enrichment
+              <br/>5) Private schools have rolling admission</p>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ marginTop: 20, fontSize: 10.5, color: "#444", textAlign: "center", paddingBottom: 28, lineHeight: 1.7 }}>
+          <strong style={{ color: "#666" }}>Sources:</strong> Niche | GreatSchools | SchoolDigger | U.S. News | NCDPI | PublicSchoolReview | PrivateSchoolReview | WCPSS
+          <br/>Test: EOG 2023-24. Demographics: NCES. Sentiment: aggregated estimates. Assignments subject to redistricting.
+        </div>
+      </div>
+    </div>
+  );
+}
