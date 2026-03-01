@@ -18,6 +18,7 @@ const SCHOOLS = [
     grades: "PK-5",
     address: "10401 Penny Road, Raleigh, NC 27606",
     yourZoned: true, admissionChance: 100,
+    medianHomePrice: 480000, homePriceMin: 350000, homePriceMax: 650000,
     distance: "3.5 mi from your address",
     students: 553, studentTeacherRatio: 13, mathProficiency: 61, readingProficiency: 61,
     nicheGrade: "A-", greatSchoolsRating: 6, tuition: 0, diversityIndex: 0.64,
@@ -41,6 +42,7 @@ const SCHOOLS = [
     grades: "PK-5",
     address: "401 Holly Springs Rd, Holly Springs, NC 27540",
     yourZoned: false, admissionChance: 15,
+    medianHomePrice: 450000, homePriceMin: 320000, homePriceMax: 620000,
     distance: "3.2 mi from your address",
     students: 907, studentTeacherRatio: 14, mathProficiency: 83, readingProficiency: 80,
     nicheGrade: "A", greatSchoolsRating: 9, tuition: 0, diversityIndex: 0.65,
@@ -63,7 +65,8 @@ const SCHOOLS = [
     type: "Public",
     grades: "PK-5",
     address: "1451 Avent Ferry Rd, Holly Springs, NC 27540",
-    yourZoned: false, admissionChance: 15, distance: "4.1 mi",
+    yourZoned: false, admissionChance: 15,
+    medianHomePrice: 420000, homePriceMin: 310000, homePriceMax: 580000, distance: "4.1 mi",
     students: 897, studentTeacherRatio: 14, mathProficiency: 88, readingProficiency: 80,
     nicheGrade: "A", greatSchoolsRating: 8, tuition: 0, diversityIndex: 0.58,
     asianPct: 10.2, hispanicPct: 11.5, whitePct: 63.0, blackPct: 8.0, multiracialPct: 7.3,
@@ -85,7 +88,8 @@ const SCHOOLS = [
     type: "Public",
     grades: "PK-5",
     address: "900 Holly Springs Rd, Holly Springs, NC 27540",
-    yourZoned: false, admissionChance: 15, distance: "3.8 mi",
+    yourZoned: false, admissionChance: 15,
+    medianHomePrice: 410000, homePriceMin: 300000, homePriceMax: 560000, distance: "3.8 mi",
     students: 751, studentTeacherRatio: 14, mathProficiency: 84, readingProficiency: 75,
     nicheGrade: "A", greatSchoolsRating: 8, tuition: 0, diversityIndex: 0.52,
     asianPct: 8.0, hispanicPct: 9.5, whitePct: 68.0, blackPct: 7.5, multiracialPct: 7.0,
@@ -129,7 +133,8 @@ const SCHOOLS = [
     type: "Public (Middle)",
     grades: "6-8",
     address: "1002 Lufkin Road, Apex, NC 27539",
-    yourZoned: true, admissionChance: 100, distance: "2.1 mi from your address",
+    yourZoned: true, admissionChance: 100,
+    medianHomePrice: 480000, homePriceMin: 350000, homePriceMax: 650000, distance: "2.1 mi from your address",
     students: 957, studentTeacherRatio: 15, mathProficiency: 65, readingProficiency: 70,
     nicheGrade: "A", greatSchoolsRating: 10, tuition: 0, diversityIndex: 0.62,
     asianPct: 11.0, hispanicPct: 13.0, whitePct: 58.0, blackPct: 10.0, multiracialPct: 8.0,
@@ -151,7 +156,8 @@ const SCHOOLS = [
     type: "Public (High)",
     grades: "9-12",
     address: "5329 Cass Holt Rd, Holly Springs, NC 27540",
-    yourZoned: false, admissionChance: 10, distance: "4.5 mi",
+    yourZoned: false, admissionChance: 10,
+    medianHomePrice: 450000, homePriceMin: 320000, homePriceMax: 620000, distance: "4.5 mi",
     students: 2200, studentTeacherRatio: 16, mathProficiency: 55, readingProficiency: 72,
     nicheGrade: "A", greatSchoolsRating: 7, tuition: 0, diversityIndex: 0.66,
     asianPct: 10.0, hispanicPct: 14.0, whitePct: 55.0, blackPct: 12.0, multiracialPct: 9.0,
@@ -195,7 +201,8 @@ const SCHOOLS = [
     type: "Charter (Free)",
     grades: "K-8",
     address: "220 Rosewood Centre Dr, Holly Springs, NC 27540",
-    yourZoned: false, admissionChance: 35, distance: "5.2 mi",
+    yourZoned: false, admissionChance: 35,
+    medianHomePrice: 430000, homePriceMin: 310000, homePriceMax: 590000, distance: "5.2 mi",
     students: 1268, studentTeacherRatio: 17, mathProficiency: 66, readingProficiency: 71,
     nicheGrade: "A", greatSchoolsRating: 5, tuition: 0, diversityIndex: 0.47,
     asianPct: 9.0, hispanicPct: 7.0, whitePct: 72.0, blackPct: 4.0, multiracialPct: 8.0,
@@ -217,7 +224,8 @@ const SCHOOLS = [
     type: "Private",
     grades: "PK-10 (expanding to 12)",
     address: "11244 Holly Springs New Hill Rd, Holly Springs, NC 27540",
-    yourZoned: false, admissionChance: 90, distance: "4.8 mi",
+    yourZoned: false, admissionChance: 90,
+    medianHomePrice: 440000, homePriceMin: 310000, homePriceMax: 600000, distance: "4.8 mi",
     students: 732, studentTeacherRatio: 14, mathProficiency: null, readingProficiency: null,
     nicheGrade: "A", greatSchoolsRating: null, tuition: 7000, diversityIndex: 0.35,
     asianPct: 6.0, hispanicPct: 5.0, whitePct: 78.0, blackPct: 4.0, multiracialPct: 7.0,
@@ -239,7 +247,8 @@ const SCHOOLS = [
     type: "Private (Montessori)",
     grades: "Infant through 8th",
     address: "5617 Sunset Lake Rd, Holly Springs, NC 27540",
-    yourZoned: false, admissionChance: 80, distance: "2.8 mi",
+    yourZoned: false, admissionChance: 80,
+    medianHomePrice: 520000, homePriceMin: 380000, homePriceMax: 700000, distance: "2.8 mi",
     students: 259, studentTeacherRatio: 8, mathProficiency: null, readingProficiency: null,
     nicheGrade: "B+", greatSchoolsRating: null, tuition: 12000, diversityIndex: 0.55,
     asianPct: 12.0, hispanicPct: 8.0, whitePct: 60.0, blackPct: 10.0, multiracialPct: 10.0,
@@ -261,7 +270,8 @@ const SCHOOLS = [
     type: "Charter (Free)",
     grades: "K-8",
     address: "3800 Weddington Rd, Apex, NC 27539",
-    yourZoned: false, admissionChance: 25, distance: "3.8 mi",
+    yourZoned: false, admissionChance: 25,
+    medianHomePrice: 460000, homePriceMin: 330000, homePriceMax: 630000, distance: "3.8 mi",
     students: 775, studentTeacherRatio: 23, mathProficiency: 84, readingProficiency: 83,
     nicheGrade: "A+", greatSchoolsRating: 9, tuition: 0, diversityIndex: 0.72,
     asianPct: 44.0, hispanicPct: 5.0, whitePct: 28.0, blackPct: 8.0, multiracialPct: 15.0,
@@ -305,7 +315,8 @@ const SCHOOLS = [
     type: "Charter (Free)",
     grades: "K-8",
     address: "2320 SW Cary Pkwy, Cary, NC 27513",
-    yourZoned: false, admissionChance: 30, distance: "13 mi",
+    yourZoned: false, admissionChance: 30,
+    medianHomePrice: 440000, homePriceMin: 310000, homePriceMax: 600000, distance: "13 mi",
     students: 720, studentTeacherRatio: 25, mathProficiency: 59, readingProficiency: 61,
     nicheGrade: "A-", greatSchoolsRating: 7, tuition: 0, diversityIndex: 0.77,
     asianPct: 14.0, hispanicPct: 20.0, whitePct: 29.0, blackPct: 30.0, multiracialPct: 6.0,
@@ -327,7 +338,8 @@ const SCHOOLS = [
     type: "Charter (Free)",
     grades: "6-12",
     address: "700 S Main St, Holly Springs, NC 27540",
-    yourZoned: false, admissionChance: 25, distance: "5.5 mi",
+    yourZoned: false, admissionChance: 25,
+    medianHomePrice: 470000, homePriceMin: 340000, homePriceMax: 640000, distance: "5.5 mi",
     students: 553, studentTeacherRatio: 13, mathProficiency: 38, readingProficiency: 49,
     nicheGrade: "C", greatSchoolsRating: 3, tuition: 0, diversityIndex: 0.45,
     asianPct: 2.0, hispanicPct: 8.0, whitePct: 71.0, blackPct: 9.0, multiracialPct: 10.0,
@@ -349,7 +361,8 @@ const SCHOOLS = [
     type: "Private",
     grades: "6-12",
     address: "1500 N Harrison Ave, Cary, NC 27513",
-    yourZoned: false, admissionChance: 40, distance: "14 mi",
+    yourZoned: false, admissionChance: 40,
+    medianHomePrice: 650000, homePriceMin: 480000, homePriceMax: 900000, distance: "14 mi",
     students: 787, studentTeacherRatio: 8, mathProficiency: null, readingProficiency: null,
     nicheGrade: "A+", greatSchoolsRating: null, tuition: 32650, diversityIndex: 0.65,
     asianPct: 20.0, hispanicPct: 6.0, whitePct: 52.0, blackPct: 12.0, multiracialPct: 10.0,
@@ -371,7 +384,8 @@ const SCHOOLS = [
     type: "Private",
     grades: "K-5",
     address: "1177 Ambergate Station, Apex, NC 27502",
-    yourZoned: false, admissionChance: 90, distance: "4.2 mi",
+    yourZoned: false, admissionChance: 90,
+    medianHomePrice: 520000, homePriceMin: 380000, homePriceMax: 700000, distance: "4.2 mi",
     students: 250, studentTeacherRatio: 14, mathProficiency: null, readingProficiency: null,
     nicheGrade: "A", greatSchoolsRating: null, tuition: 6725, diversityIndex: 0.38,
     asianPct: 8.0, hispanicPct: 5.0, whitePct: 75.0, blackPct: 5.0, multiracialPct: 7.0,
@@ -392,7 +406,8 @@ const SCHOOLS = [
     type: "Private (Christian)",
     grades: "K-12",
     address: "511 Walnut St, Cary, NC 27511",
-    yourZoned: false, admissionChance: 85, distance: "10 mi",
+    yourZoned: false, admissionChance: 85,
+    medianHomePrice: 580000, homePriceMin: 420000, homePriceMax: 780000, distance: "10 mi",
     students: 785, studentTeacherRatio: 12, mathProficiency: null, readingProficiency: null,
     nicheGrade: "A", greatSchoolsRating: null, tuition: 9981, diversityIndex: 0.45,
     asianPct: 8.0, hispanicPct: 6.0, whitePct: 72.0, blackPct: 7.0, multiracialPct: 7.0,
@@ -413,7 +428,8 @@ const SCHOOLS = [
     type: "Private (Episcopal)",
     grades: "PK-12",
     address: "3400 White Oak Rd, Raleigh, NC 27609",
-    yourZoned: false, admissionChance: 75, distance: "14 mi",
+    yourZoned: false, admissionChance: 75,
+    medianHomePrice: 600000, homePriceMin: 440000, homePriceMax: 820000, distance: "14 mi",
     students: 684, studentTeacherRatio: 7, mathProficiency: null, readingProficiency: null,
     nicheGrade: "A+", greatSchoolsRating: null, tuition: 28500, diversityIndex: 0.55,
     asianPct: 10.0, hispanicPct: 6.0, whitePct: 62.0, blackPct: 12.0, multiracialPct: 10.0,
@@ -434,7 +450,8 @@ const SCHOOLS = [
     type: "Private (Classical Christian)",
     grades: "PK-12",
     address: "10224 Baileywick Rd, Raleigh, NC 27613",
-    yourZoned: false, admissionChance: 85, distance: "15 mi",
+    yourZoned: false, admissionChance: 85,
+    medianHomePrice: 560000, homePriceMin: 400000, homePriceMax: 760000, distance: "15 mi",
     students: 536, studentTeacherRatio: 10, mathProficiency: null, readingProficiency: null,
     nicheGrade: "A", greatSchoolsRating: null, tuition: 15701, diversityIndex: 0.40,
     asianPct: 6.0, hispanicPct: 5.0, whitePct: 76.0, blackPct: 5.0, multiracialPct: 8.0,
@@ -455,7 +472,8 @@ const SCHOOLS = [
     type: "Public",
     grades: "PK-5",
     address: "7901 Humie Olive Rd, Apex, NC 27502",
-    yourZoned: false, admissionChance: 10, distance: "2.5 mi",
+    yourZoned: false, admissionChance: 10,
+    medianHomePrice: 510000, homePriceMin: 370000, homePriceMax: 690000, distance: "2.5 mi",
     students: 876, studentTeacherRatio: 15, mathProficiency: 93, readingProficiency: 85,
     nicheGrade: "A+", greatSchoolsRating: 8, tuition: 0, diversityIndex: 0.64,
     asianPct: 36.0, hispanicPct: 9.0, whitePct: 48.0, blackPct: 4.0, multiracialPct: 3.0,
@@ -476,7 +494,8 @@ const SCHOOLS = [
     type: "Public (Middle)",
     grades: "6-8",
     address: "7701 Humie Olive Rd, Apex, NC 27502",
-    yourZoned: false, admissionChance: 10, distance: "2.0 mi",
+    yourZoned: false, admissionChance: 10,
+    medianHomePrice: 510000, homePriceMin: 370000, homePriceMax: 690000, distance: "2.0 mi",
     students: 1392, studentTeacherRatio: 18, mathProficiency: 81, readingProficiency: 76,
     nicheGrade: "A", greatSchoolsRating: 10, tuition: 0, diversityIndex: 0.54,
     asianPct: 15.0, hispanicPct: 9.0, whitePct: 64.0, blackPct: 8.0, multiracialPct: 4.0,
@@ -497,7 +516,8 @@ const SCHOOLS = [
     type: "Public (High)",
     grades: "9-12",
     address: "7801 Humie Olive Rd, Apex, NC 27502",
-    yourZoned: false, admissionChance: 10, distance: "3.0 mi",
+    yourZoned: false, admissionChance: 10,
+    medianHomePrice: 510000, homePriceMin: 370000, homePriceMax: 690000, distance: "3.0 mi",
     students: 2748, studentTeacherRatio: 20, mathProficiency: 75, readingProficiency: 87,
     nicheGrade: "A-", greatSchoolsRating: 9, tuition: 0, diversityIndex: 0.53,
     asianPct: 12.0, hispanicPct: 10.0, whitePct: 67.0, blackPct: 7.0, multiracialPct: 4.0,
@@ -518,7 +538,8 @@ const SCHOOLS = [
     type: "Private",
     grades: "PK-8",
     address: "130 Towne Village Dr, Cary, NC 27513",
-    yourZoned: false, admissionChance: 90, distance: "6 mi",
+    yourZoned: false, admissionChance: 90,
+    medianHomePrice: 520000, homePriceMin: 380000, homePriceMax: 700000, distance: "6 mi",
     students: 214, studentTeacherRatio: 9, mathProficiency: null, readingProficiency: null,
     nicheGrade: "A+", greatSchoolsRating: null, tuition: 16806, diversityIndex: 0.65,
     asianPct: 18.0, hispanicPct: 8.0, whitePct: 52.0, blackPct: 12.0, multiracialPct: 10.0,
@@ -539,7 +560,8 @@ const SCHOOLS = [
     type: "Public",
     grades: "PK-5",
     address: "500 Elm St, Apex, NC 27523",
-    yourZoned: false, admissionChance: 5, distance: "8.5 mi",
+    yourZoned: false, admissionChance: 5,
+    medianHomePrice: 570000, homePriceMin: 420000, homePriceMax: 770000, distance: "8.5 mi",
     students: 820, studentTeacherRatio: 15, mathProficiency: 96, readingProficiency: 91,
     nicheGrade: "A+", greatSchoolsRating: 10, tuition: 0, diversityIndex: 0.62,
     asianPct: 64.0, hispanicPct: 4.0, whitePct: 18.0, blackPct: 5.0, multiracialPct: 9.0,
@@ -560,7 +582,8 @@ const SCHOOLS = [
     type: "Public",
     grades: "PK-5",
     address: "505 Mills Park Dr, Cary, NC 27519",
-    yourZoned: false, admissionChance: 5, distance: "9 mi",
+    yourZoned: false, admissionChance: 5,
+    medianHomePrice: 580000, homePriceMin: 430000, homePriceMax: 780000, distance: "9 mi",
     students: 900, studentTeacherRatio: 15, mathProficiency: 88, readingProficiency: 85,
     nicheGrade: "A+", greatSchoolsRating: 10, tuition: 0, diversityIndex: 0.66,
     asianPct: 53.0, hispanicPct: 5.0, whitePct: 26.0, blackPct: 6.0, multiracialPct: 10.0,
@@ -581,7 +604,8 @@ const SCHOOLS = [
     type: "Public",
     grades: "9-12",
     address: "2500 Carpenter Upchurch Rd, Cary, NC 27519",
-    yourZoned: false, admissionChance: 5, distance: "9.5 mi",
+    yourZoned: false, admissionChance: 5,
+    medianHomePrice: 580000, homePriceMin: 430000, homePriceMax: 780000, distance: "9.5 mi",
     students: 2400, studentTeacherRatio: 16, mathProficiency: 91, readingProficiency: 82,
     nicheGrade: "A+", greatSchoolsRating: 9, tuition: 0, diversityIndex: 0.64,
     asianPct: 42.0, hispanicPct: 7.0, whitePct: 36.0, blackPct: 6.0, multiracialPct: 9.0,
@@ -602,7 +626,8 @@ const SCHOOLS = [
     type: "Public",
     grades: "9-12",
     address: "7600 Roberts Rd, Cary, NC 27519",
-    yourZoned: false, admissionChance: 5, distance: "10 mi",
+    yourZoned: false, admissionChance: 5,
+    medianHomePrice: 540000, homePriceMin: 390000, homePriceMax: 730000, distance: "10 mi",
     students: 1800, studentTeacherRatio: 16, mathProficiency: 89, readingProficiency: 80,
     nicheGrade: "A+", greatSchoolsRating: 9, tuition: 0, diversityIndex: 0.68,
     asianPct: 45.0, hispanicPct: 6.0, whitePct: 30.0, blackPct: 8.0, multiracialPct: 11.0,
@@ -623,7 +648,8 @@ const SCHOOLS = [
     type: "Public",
     grades: "9-12",
     address: "1501 Laura Duncan Rd, Apex, NC 27502",
-    yourZoned: false, admissionChance: 15, distance: "5 mi",
+    yourZoned: false, admissionChance: 15,
+    medianHomePrice: 500000, homePriceMin: 360000, homePriceMax: 680000, distance: "5 mi",
     students: 2434, studentTeacherRatio: 19, mathProficiency: 72, readingProficiency: 78,
     nicheGrade: "A", greatSchoolsRating: 9, tuition: 0, diversityIndex: 0.60,
     asianPct: 12.0, hispanicPct: 16.0, whitePct: 58.0, blackPct: 10.0, multiracialPct: 4.0,
@@ -644,7 +670,8 @@ const SCHOOLS = [
     type: "Public",
     grades: "6-8",
     address: "400 Davis Dr, Cary, NC 27519",
-    yourZoned: false, admissionChance: 5, distance: "9 mi",
+    yourZoned: false, admissionChance: 5,
+    medianHomePrice: 560000, homePriceMin: 410000, homePriceMax: 760000, distance: "9 mi",
     students: 997, studentTeacherRatio: 17, mathProficiency: 89, readingProficiency: 83,
     nicheGrade: "A", greatSchoolsRating: 10, tuition: 0, diversityIndex: 0.64,
     asianPct: 41.0, hispanicPct: 10.0, whitePct: 40.0, blackPct: 5.0, multiracialPct: 3.0,
@@ -665,7 +692,8 @@ const SCHOOLS = [
     type: "Magnet",
     grades: "K-5",
     address: "1000 Fayetteville St, Raleigh, NC 27601",
-    yourZoned: false, admissionChance: 20, distance: "20 mi",
+    yourZoned: false, admissionChance: 20,
+    medianHomePrice: 500000, homePriceMin: 350000, homePriceMax: 700000, distance: "20 mi",
     students: 478, studentTeacherRatio: 12, mathProficiency: 69, readingProficiency: 69,
     nicheGrade: "A", greatSchoolsRating: 5, tuition: 0, diversityIndex: 0.72,
     asianPct: 44.0, hispanicPct: 7.0, whitePct: 18.0, blackPct: 26.0, multiracialPct: 5.0,
@@ -686,7 +714,8 @@ const SCHOOLS = [
     type: "Magnet",
     grades: "6-8",
     address: "1100 Fayetteville St, Raleigh, NC 27601",
-    yourZoned: false, admissionChance: 15, distance: "20 mi",
+    yourZoned: false, admissionChance: 15,
+    medianHomePrice: 500000, homePriceMin: 350000, homePriceMax: 700000, distance: "20 mi",
     students: 878, studentTeacherRatio: 15, mathProficiency: 63, readingProficiency: 69,
     nicheGrade: "A", greatSchoolsRating: 10, tuition: 0, diversityIndex: 0.70,
     asianPct: 43.0, hispanicPct: 13.0, whitePct: 10.0, blackPct: 33.0, multiracialPct: 2.0,
@@ -707,7 +736,8 @@ const SCHOOLS = [
     type: "Magnet",
     grades: "6-8",
     address: "706 E Lenoir St, Raleigh, NC 27601",
-    yourZoned: false, admissionChance: 15, distance: "20 mi",
+    yourZoned: false, admissionChance: 15,
+    medianHomePrice: 500000, homePriceMin: 350000, homePriceMax: 700000, distance: "20 mi",
     students: 904, studentTeacherRatio: 14, mathProficiency: 65, readingProficiency: 70,
     nicheGrade: "A", greatSchoolsRating: 6, tuition: 0, diversityIndex: 0.68,
     asianPct: 6.0, hispanicPct: 13.0, whitePct: 47.0, blackPct: 29.0, multiracialPct: 4.0,
@@ -728,7 +758,8 @@ const SCHOOLS = [
     type: "Magnet",
     grades: "9-12",
     address: "128 Clarendon Crescent, Raleigh, NC 27610",
-    yourZoned: false, admissionChance: 12, distance: "20 mi",
+    yourZoned: false, admissionChance: 12,
+    medianHomePrice: 500000, homePriceMin: 350000, homePriceMax: 700000, distance: "20 mi",
     students: 2538, studentTeacherRatio: 17, mathProficiency: 61, readingProficiency: 84,
     nicheGrade: "A+", greatSchoolsRating: 8, tuition: 0, diversityIndex: 0.75,
     asianPct: 20.0, hispanicPct: 14.0, whitePct: 37.0, blackPct: 24.0, multiracialPct: 5.0,
@@ -822,6 +853,8 @@ export default function SchoolDashboard() {
   const [showW, setShowW] = useState(false);
   const [showS, setShowS] = useState(false);
   const [sort, setSort] = useState("total");
+  const [priceMin, setPriceMin] = useState(200);
+  const [priceMax, setPriceMax] = useState(1200);
 
   const scored = useMemo(() => SCHOOLS.map(s => ({ ...s, ...computeScore(s, factors) })), [factors]);
   const filtered = useMemo(() => {
@@ -829,9 +862,10 @@ export default function SchoolDashboard() {
     if (lvl === "Elementary") list = list.filter(s => s.grades.match(/K-5|K-8|PK-5|PK-10|Infant/i));
     else if (lvl === "Middle") list = list.filter(s => s.grades.match(/6-8|K-8|Infant.*8/i));
     else if (lvl === "High") list = list.filter(s => s.grades.match(/9-1|PK-10|K-10/i));
+    list = list.filter(s => !s.medianHomePrice || (s.medianHomePrice >= priceMin * 1000 && s.medianHomePrice <= priceMax * 1000));
     const sorters = { total: (a, b) => b.total - a.total, math: (a, b) => (b.mathProficiency||0) - (a.mathProficiency||0), asian: (a, b) => b.asianPct - a.asianPct, diversity: (a, b) => b.diversityIndex - a.diversityIndex, sentiment: (a, b) => b.sentimentScore - a.sentimentScore, ratio: (a, b) => a.studentTeacherRatio - b.studentTeacherRatio, chance: (a, b) => b.admissionChance - a.admissionChance };
     return [...list].sort(sorters[sort] || sorters.total);
-  }, [scored, lvl, sort]);
+  }, [scored, lvl, sort, priceMin, priceMax]);
 
   const tw = factors.reduce((s, f) => s + f.weight, 0);
   const fc = { academic: "#4ecdc4", diversity: "#ff6b6b", asianRep: "#ff922b", sentiment: "#e879a8", ratio: "#ffd93d", continuity: "#c084fc", cost: "#6bcb77", gifted: "#74c0fc" };
@@ -866,8 +900,13 @@ export default function SchoolDashboard() {
           <select value={sort} onChange={e => setSort(e.target.value)} style={{ padding: "5px 10px", borderRadius: 8, border: "1px solid #2d2d5a", background: "#111130", color: "#e0e0ff", fontSize: 11.5, cursor: "pointer" }}>
             <option value="total">Sort: Weighted Score</option><option value="math">Sort: Math %</option><option value="asian">Sort: Asian %</option><option value="diversity">Sort: Diversity</option><option value="sentiment">Sort: Sentiment</option><option value="ratio">Sort: Ratio</option>
               <option value="chance">Admission Chance %</option>
+                <option value="price">Home Price (Low to High)</option>
           </select>
           <button onClick={() => setShowW(!showW)} style={{ padding: "5px 14px", borderRadius: 18, border: "1px solid #c084fc", background: showW ? "rgba(192,132,252,0.12)" : "transparent", color: "#c084fc", cursor: "pointer", fontSize: 11.5, fontWeight: 600 }}>Adjust Weights</button>
+              <span style={{ fontSize: 11, color: "#888", marginLeft: 12 }}>Home $K:</span>
+              <input type="number" value={priceMin} onChange={e => setPriceMin(+e.target.value)} style={{ width: 55, padding: "3px 5px", borderRadius: 8, border: "1px solid #333", background: "#1e1e38", color: "#fff", fontSize: 11, marginLeft: 4 }} />
+              <span style={{ color: "#555", fontSize: 11 }}> - </span>
+              <input type="number" value={priceMax} onChange={e => setPriceMax(+e.target.value)} style={{ width: 55, padding: "3px 5px", borderRadius: 8, border: "1px solid #333", background: "#1e1e38", color: "#fff", fontSize: 11 }} />
           <button onClick={() => setShowS(!showS)} style={{ padding: "5px 14px", borderRadius: 18, border: "1px solid #74c0fc", background: showS ? "rgba(116,192,252,0.12)" : "transparent", color: "#74c0fc", cursor: "pointer", fontSize: 11.5, fontWeight: 600, marginLeft: "auto" }}>Data Sources</button>
         </div>
 
@@ -935,6 +974,7 @@ export default function SchoolDashboard() {
                     { l: "Sent.", v: s.sentimentScore + "", c: s.sentimentScore >= 80 ? "#6bcb77" : s.sentimentScore >= 70 ? "#ffd93d" : "#ff6b6b" },
                     { l: "Ratio", v: s.studentTeacherRatio + ":1", c: "#e0e0ff" },
                     { l: "Cost", v: s.tuition === 0 ? "Free" : "$" + (s.tuition / 1000).toFixed(0) + "K", c: s.tuition === 0 ? "#6bcb77" : "#ffd93d" },
+                    { l: "Home", v: s.medianHomePrice ? "$" + Math.round(s.medianHomePrice / 1000) + "K" : "N/A", c: !s.medianHomePrice ? "#666" : s.medianHomePrice <= 400000 ? "#6bcb77" : s.medianHomePrice <= 550000 ? "#ffd93d" : "#ff6b6b" },
                   ].map(m => (<div key={m.l} style={{ textAlign: "center", minWidth: 38 }}><div style={{ fontSize: 9.5, color: "#666" }}>{m.l}</div><div style={{ fontSize: 13, fontWeight: 700, color: m.c, fontFamily: "'JetBrains Mono',monospace" }}>{m.v}</div></div>))}
                   <div style={{ width: 48, height: 48, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", background: `conic-gradient(${s.total >= 78 ? "#4ecdc4" : s.total >= 65 ? "#ffd93d" : "#ff6b6b"} ${s.total * 3.6}deg, #1a1a2e ${s.total * 3.6}deg)`, flexShrink: 0 }}>
                     <div style={{ width: 38, height: 38, borderRadius: "50%", background: "#12122a", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 13, fontFamily: "'JetBrains Mono',monospace", color: s.total >= 78 ? "#4ecdc4" : s.total >= 65 ? "#ffd93d" : "#ff6b6b" }}>{Math.round(s.total)}</div>
@@ -982,6 +1022,31 @@ export default function SchoolDashboard() {
                   <div style={{ marginTop: 10, background: "rgba(78,205,196,0.04)", borderRadius: 8, padding: 10, fontSize: 11, color: "#aaa", lineHeight: 1.55 }}>
                     <strong style={{ color: "#ddd" }}>Analysis:</strong> {s.notes}
                   </div>
+                  {s.medianHomePrice && (
+                  <div style={{ marginTop: 10, background: "rgba(139,92,246,0.06)", border: "1px solid rgba(139,92,246,0.15)", borderRadius: 8, padding: 12 }}>
+                    <h4 style={{ fontSize: 11.5, fontWeight: 600, marginBottom: 8, color: "#a78bfa" }}>Nearby Home Prices</h4>
+                    <div style={{ fontSize: 11, color: "#aaa", marginBottom: 8 }}>
+                      {"Median: $" + Math.round(s.medianHomePrice / 1000) + "K | Range: $" + Math.round(s.homePriceMin / 1000) + "K - $" + Math.round(s.homePriceMax / 1000) + "K"}
+                    </div>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8 }}>
+                      {[0.82, 0.97, 1.08, 1.22].map(function(mult, idx) {
+                        var p = Math.round(s.medianHomePrice * mult / 1000) * 1000;
+                        var beds = [3, 4, 4, 5][idx];
+                        var sqft = [1800, 2400, 2800, 3500][idx];
+                        return (
+                          <div key={idx} style={{ background: "rgba(30,30,56,0.6)", borderRadius: 6, padding: "8px 10px" }}>
+                            <div style={{ fontSize: 13, fontWeight: 700, color: "#a78bfa" }}>{"$" + Math.round(p / 1000) + "K"}</div>
+                            <div style={{ fontSize: 10, color: "#888" }}>{beds + "bd | " + sqft.toLocaleString() + " sqft"}</div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <div style={{ marginTop: 8, fontSize: 10 }}>
+                      <a href={"https://www.zillow.com/homes/" + encodeURIComponent(s.address.split(",")[0]) + "_rb/"} target="_blank" rel="noopener noreferrer" style={{ color: "#60a5fa", textDecoration: "none", marginRight: 12 }}>Zillow Listings</a>
+                      <a href="https://www.redfin.com/city/31575/NC/Apex" target="_blank" rel="noopener noreferrer" style={{ color: "#60a5fa", textDecoration: "none" }}>Redfin Listings</a>
+                    </div>
+                  </div>
+                  )}
                 </div>
               )}
             </div>
