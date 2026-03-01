@@ -996,7 +996,7 @@ export default function SchoolDashboard() {
                   <div style={{ marginTop: 10, background: "rgba(139,92,246,0.06)", border: "1px solid rgba(139,92,246,0.15)", borderRadius: 8, padding: 12 }}>
                     <h4 style={{ fontSize: 11.5, fontWeight: 600, marginBottom: 8, color: "#a78bfa" }}>Nearby Homes</h4>
                     <div style={{ fontSize: 11, color: "#aaa", marginBottom: 8 }}>
-                      Median: <strong style={{ color: "#ddd" }}>${"$" + (s.medianHomePrice/1000).toFixed(0) + "K"}</strong> | Range: <strong style={{ color: "#ddd" }}>${"$" + (s.homePriceMin/1000).toFixed(0) + "K - $" + (s.homePriceMax/1000).toFixed(0) + "K"}</strong>
+                      Median: <strong style={{ color: "#ddd" }}>{"$" + (s.medianHomePrice/1000).toFixed(0) + "K"}</strong> | Range: <strong style={{ color: "#ddd" }}>{"$" + (s.homePriceMin/1000).toFixed(0) + "K - $" + (s.homePriceMax/1000).toFixed(0) + "K"}</strong>
                     </div>
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: 8 }}>
                       {[0.82, 0.97, 1.08, 1.22].map((m, i) => {
