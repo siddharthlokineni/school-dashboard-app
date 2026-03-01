@@ -945,7 +945,6 @@ export default function SchoolDashboard() {
                     { l: "Sent.", v: s.sentimentScore + "", c: s.sentimentScore >= 80 ? "#6bcb77" : s.sentimentScore >= 70 ? "#ffd93d" : "#ff6b6b" },
                     { l: "Ratio", v: s.studentTeacherRatio + ":1", c: "#e0e0ff" },
                     { l: "Cost", v: s.tuition === 0 ? "Free" : "$" + (s.tuition / 1000).toFixed(0) + "K", c: s.tuition === 0 ? "#6bcb77" : "#ffd93d" },
-                    { l: "Home", v: s.medianHomePrice ? "$" + Math.round(s.medianHomePrice / 1000) + "K" : "N/A", c: s.medianHomePrice <= 400000 ? "#6bcb77" : s.medianHomePrice <= 550000 ? "#ffd93d" : "#ff6b6b" },
                   ].map(m => (<div key={m.l} style={{ textAlign: "center", minWidth: 38 }}><div style={{ fontSize: 9.5, color: "#666" }}>{m.l}</div><div style={{ fontSize: 13, fontWeight: 700, color: m.c, fontFamily: "'JetBrains Mono',monospace" }}>{m.v}</div></div>))}
                   <div style={{ width: 48, height: 48, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", background: `conic-gradient(${s.total >= 78 ? "#4ecdc4" : s.total >= 65 ? "#ffd93d" : "#ff6b6b"} ${s.total * 3.6}deg, #1a1a2e ${s.total * 3.6}deg)`, flexShrink: 0 }}>
                     <div style={{ width: 38, height: 38, borderRadius: "50%", background: "#12122a", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 13, fontFamily: "'JetBrains Mono',monospace", color: s.total >= 78 ? "#4ecdc4" : s.total >= 65 ? "#ffd93d" : "#ff6b6b" }}>{Math.round(s.total)}</div>
@@ -993,19 +992,7 @@ export default function SchoolDashboard() {
                   <div style={{ marginTop: 10, background: "rgba(78,205,196,0.04)", borderRadius: 8, padding: 10, fontSize: 11, color: "#aaa", lineHeight: 1.55 }}>
                     <strong style={{ color: "#ddd" }}>Analysis:</strong> {s.notes}
                   </div>
-                  {s.medianHomePrice > 0 && <div style={{ marginTop: 10, background: "rgba(139,92,246,0.06)", border: "1px solid rgba(139,92,246,0.15)", borderRadius: 8, padding: 12 }}>
-                    <h4 style={{ fontSize: 11.5, fontWeight: 600, marginBottom: 8, color: "#a78bfa" }}>Nearby Home Prices</h4>
-                    <div style={{ fontSize: 11, color: "#aaa", marginBottom: 8 }}>
-                      Median: <strong style={{ color: "#ddd" }}>{"$" + Math.round(s.medianHomePrice / 1000) + "K"}</strong>{" | "}Range: <strong style={{ color: "#ddd" }}>{"$" + Math.round(s.homePriceMin / 1000) + "K"}</strong> - <strong style={{ color: "#ddd" }}>{"$" + Math.round(s.homePriceMax / 1000) + "K"}</strong>
-                    </div>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8 }}>
-                      {[0.82, 0.97, 1.08, 1.22].map(function(mult, idx) { var p = Math.round(s.medianHomePrice * mult / 1000) * 1000; var beds = [3, 4, 4, 5][idx]; var sqft = [1800, 2400, 2800, 3500][idx]; return (<div key={idx} style={{background: "rgba(30,30,56,0.6)", borderRadius: 6, padding: "8px 10px"}}><div style={{fontSize: 13, fontWeight: 700, color: "#a78bfa"}}>{"$" + Math.round(p/1000) + "K"}</div><div style={{fontSize: 10, color: "#888"}}>{beds + "bd | " + sqft.toLocaleString() + " sqft"}</div></div>); })}
-                    </div>
-                    <div style={{ marginTop: 8, fontSize: 10, color: "#60a5fa" }}>
-                      <a href={"https://www.zillow.com/homes/" + encodeURIComponent(s.address.split(",")[0]) + "_rb/"} target="_blank" rel="noopener noreferrer" style={{ color: "#60a5fa", textDecoration: "none", marginRight: 12 }}>Zillow Listings</a>
-                      <a href={"https://www.redfin.com/zipcode/" + (s.address.match(/\d{5}/) || ["27540"])[0]} target="_blank" rel="noopener noreferrer" style={{ color: "#60a5fa", textDecoration: "none" }}>Redfin Listings</a>
-                    </div>
-                  </div>}
+                  
                   
                 </div>
               )}
