@@ -1043,7 +1043,7 @@ export default function SchoolDashboard() {
                     </div>
                     <div style={{ marginTop: 8, fontSize: 10 }}>
                       <a href={"https://www.zillow.com/" + (s.address.includes("Holly Springs") ? "holly-springs-nc" : s.address.includes("Apex") ? "apex-nc" : s.address.includes("Cary") ? "cary-nc" : s.address.includes("Fuquay") ? "fuquay-varina-nc" : "raleigh-nc") + "/"} target="_blank" rel="noopener noreferrer" style={{ color: "#60a5fa", textDecoration: "none", marginRight: 12 }}>Zillow Listings</a>
-                      <a href={"https://www.redfin.com/city/" + (s.address.includes("Holly Springs") ? "31603/NC/Holly-Springs" : s.address.includes("Apex") ? "31575/NC/Apex" : s.address.includes("Cary") ? "31556/NC/Cary" : s.address.includes("Fuquay") ? "31593/NC/Fuquay-Varina" : "35711/NC/Raleigh")} target="_blank" rel="noopener noreferrer" style={{ color: "#60a5fa", textDecoration: "none" }}>Redfin Listings</a>
+                      <a href={"https://www.redfin.com/NC/" + (s.address.includes("Holly Springs") ? "Holly-Springs" : s.address.includes("Apex") ? "Apex" : s.address.includes("Cary") ? "Cary" : s.address.includes("Fuquay") ? "Fuquay-Varina" : "Raleigh")} target="_blank" rel="noopener noreferrer" style={{ color: "#60a5fa", textDecoration: "none" }}>Redfin Listings</a>
                     </div>
                   </div>
                   )}
